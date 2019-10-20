@@ -53,3 +53,24 @@ def get_factors(factor_path, period, market_type='P9709', portfolio='1', mode='d
                            'CMA2']].astype('float').sum()
         return pd.DataFrame(factor_month_dict).T
 
+
+def update_allocator(pickle_path, *args):
+    """
+    Update factors in allocator file.
+    :param pickle_path: Pickle path of the original allocator file
+    :param args: tuple as (factor_name, factor_path)
+    :return: None
+    """
+    allocator = Allocate.load_pickle(pickle_path)
+    for arg in args:
+        factor_name = arg[0]
+        factor_path = arg[1]
+        try:
+            allocator.add_factor(factor_name, factor_path)
+        except FileExistsError as e:
+            print(e)
+    allocator.to_pickle(pickle_path)
+    return
+
+
+

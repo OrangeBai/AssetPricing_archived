@@ -1,5 +1,6 @@
 from core.portfolio import *
 from core.allocate import *
+from core.adv_utlis import *
 import config
 
 
@@ -19,12 +20,19 @@ all_stocks.print()
 all_stocks.to_pickle('AllStocksPortfolio')
 
 
-allocate = Allocate(config.A_lists, config.month_split)
-turnover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
-mv_path = os.path.join(config.feature_directory, 'M_MktV.csv')
+allocator_M = Allocate(config.A_lists, config.month_split_all)
+allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
+allocator_M.to_pickle(allocator_M_path)
+
+
+adjTover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
+mktValue_path = os.path.join(config.feature_directory, 'M_MktV.csv')
 sigma_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
-allocate.add_factor('turnover', turnover_path)
-allocate.add_factor('mv', mv_path)
-allocate.add_factor('sigma', sigma_path)
-allocate.to_pickle('AllStocksAllocate')
+update_allocator(allocator_M_path, ('adjTover', adjTover_path), ('MV', mktValue_path), ('sigma', sigma_path))
+
+allocator_Y = Allocate(config.A_lists, config.year_split_all)
+allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
+allocator_Y.to_pickle(allocator_Y_path)
+
+
 

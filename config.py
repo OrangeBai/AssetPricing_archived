@@ -10,11 +10,13 @@ raw_directory = os.path.join(base_directory, 'Raw')
 csv_directory = os.path.join(base_directory, 'CSV')
 feature_directory = os.path.join(base_directory, 'Features')
 extracted_directory = os.path.join(base_directory, 'Extracted')
+factor_path = os.path.join(base_directory, 'Factors')
 
 calendar_path = os.path.join(raw_directory, r'TRD_Cale.txt')
 trade_dates = get_trade_dates(calendar_path, period)
 all_trade_dates = get_trade_dates(calendar_path, all_period)
 
+month_split_all, quarter_split_all, year_split_all, month_tag_all, quarter_tag_all, year_tag_all = get_split(all_period)
 month_split, quarter_split, year_split, month_tag, quarter_tag, year_tag = get_split(period)
 
 co_file = os.path.join(raw_directory, 'TRD_Co.txt')
@@ -28,6 +30,6 @@ A_lists = A_info.index.tolist()
 
 project_path = get_project_root()
 
-temp_data_path = os.path.join(project_path, 'temp_data')
+temp_data_path = os.path.join(base_directory, 'temp_data')
 if not os.path.exists(temp_data_path):
     os.makedirs(temp_data_path)

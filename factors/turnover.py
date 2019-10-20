@@ -75,4 +75,6 @@ Adj_MV_23_panel_ret = Adj_MV_23_panel.ret
 turnover_factor = (Adj_MV_23_panel_ret.iloc[:, 0] - Adj_MV_23_panel_ret.iloc[:, 2] +
                    Adj_MV_23_panel_ret.iloc[:, 3] - Adj_MV_23_panel_ret.iloc[:, 5]) / 2
 
+turnover_factor_path = os.path.join(config.factor_path, 'turnover.csv')
+turnover_factor.to_csv(turnover_path)
 print(1)

@@ -217,13 +217,12 @@ class Allocate:
         # return all tickers that meet the requirement.
         return selected_tickers
 
-    def to_pickle(self, name):
+    def to_pickle(self, path):
         """
         Save current object to pickle file for further use.
         The save folder is set to be default : ~/Root/Data/
-        :param name: File name
+        :param path: File name
         """
-        path = os.path.join(config.temp_data_path, name + '.p')
         f = open(path, 'wb')
         pickle.dump(self, f)
 
