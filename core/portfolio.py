@@ -99,7 +99,7 @@ class Portfolio(PortfolioBase):
         tickers = [ticker for ticker in tickers if ticker in self.tickers]
         cur_ret = self.ret.loc[period[0]: period[1], tickers]
         cur_mv = self.mv.loc[period[0]: period[1], tickers]
-        return Portfolio(period, ret = cur_ret, mv = cur_mv)
+        return Portfolio(period, ret=cur_ret, mv=cur_mv)
 
     def cal_return(self, weight='value'):
         all_stocks_return = self.ret
@@ -132,5 +132,3 @@ class PanelData(PortfolioBase):
         portfolio_return = portfolio_return[self.trade_dates]
         self.ret[name] = portfolio_return
         return
-
-

@@ -3,8 +3,7 @@ from core.allocate import *
 from core.adv_utlis import *
 import config
 
-
-period = ('1997-01', '2019-07')
+period = config.all_period
 des = 'Return and market value of all stocks from 1997 to 2019'
 
 ret_path = os.path.join(config.extracted_directory, 'DailyRet.csv')
@@ -30,7 +29,7 @@ mktValue_path = os.path.join(config.feature_directory, 'M_MktV.csv')
 sigma_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
 update_allocator(allocator_M_path, ('adjTover', adjTover_path), ('MV', mktValue_path), ('sigma', sigma_path))
 
-allocator_Y = Allocate(config.A_lists, config.year_split_all)
+allocator_Y = Allocate(config.A_lists, config.year_split_all, num_of_nan=40)
 allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
 allocator_Y.to_pickle(allocator_Y_path)
 

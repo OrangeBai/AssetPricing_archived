@@ -52,7 +52,8 @@ class Allocate:
                 if diff.days < min_diff:
                     continue
 
-                if self.na_bool.loc[period_start: period_end, stock].sum() > self.num_of_nan:
+                if self.na_bool.loc[period_start: period_end, stock].sum() > self.num_of_nan \
+                        or self.na_bool.loc[period_start: period_end, stock].shape[0] < 5:
                     continue
 
                 tickers.append(stock)

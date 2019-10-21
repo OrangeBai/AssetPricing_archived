@@ -1,7 +1,7 @@
 import os
 from core.utils import *
 
-all_period = ('1992-01-01', '2020-01-01')
+all_period = ('1990-01', '2021-01')
 period = ('1997-01', '2019-07')
 
 
