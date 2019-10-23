@@ -48,13 +48,20 @@ def get_factors(factor_path, period, market_type='P9709', portfolio='1', mode='d
         for month_period in month_split:
             if month_period[0] >= period[0] and month_period[1] <= period[1]:
                 mask = (A_factor.index > month_period[0]) & (A_factor.index < month_period[1])
-                factor_month_dict[month_period[0]] = A_factor.loc[
-                    mask, ['RiskPremium1', 'RiskPremium2', 'SMB1', 'SMB2', 'HML1', 'HML2', 'RMW1', 'RMW2', 'CMA1',
-                           'CMA2']].astype('float').sum()
+                ret = period_ret(A_factor.loc[mask, ['RiskPremium1', 'RiskPremium2', 'SMB1', 'SMB2', 'HML1', 'HML2',
+                                                     'RMW1', 'RMW2', 'CMA1', 'CMA2']].astype('float'))
+                factor_month_dict[month_period[0]] = ret
         return pd.DataFrame(factor_month_dict).T
 
 
-def update_allocator(pickle_path, *args):
+def period_ret(input_df):
+    ret = input_df.sort_index()
+    log_ret = (1 + ret).apply(np.log)
+    overall_ret = log_ret.sum()
+    return overall_ret
+
+
+def update_allocator(pickle_path, *args, replace=True):
     """
     Update factors in allocator file.
     :param pickle_path: Pickle path of the original allocator file
@@ -66,11 +73,8 @@ def update_allocator(pickle_path, *args):
         factor_name = arg[0]
         factor_path = arg[1]
         try:
-            allocator.add_factor(factor_name, factor_path)
+            allocator.add_factor(factor_name, factor_path, replace=True)
         except FileExistsError as e:
             print(e)
     allocator.to_pickle(pickle_path)
     return
-
-
-

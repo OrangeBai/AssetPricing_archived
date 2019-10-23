@@ -66,9 +66,9 @@ class Allocate:
 
         return period_to_ticker
 
-    def add_factor(self, factor_name, factor_path, replace='False'):
-        if factor_name in self.factors.keys() and replace == 'False':
-            print('{0} already exist, replacement failed.')
+    def add_factor(self, factor_name, factor_path, replace=False):
+        if factor_name in self.factors.keys() and replace is False:
+            print('{0} already exist, replacement failed.'.format(factor_name))
             return
         self.factors[factor_name] = pd.read_csv(factor_path, index_col=0)
         print('Adding {0} factor from {1}'.format(factor_name, factor_path))

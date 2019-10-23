@@ -1,7 +1,7 @@
-import config
-import os
-import pandas as pd
 from core.rolling_windows import *
+from core.portfolio import *
+from core.allocate import *
+from core.adv_utlis import *
 
 # Load the panel data of dependent portfolios
 ret_path = os.path.join(config.extracted_directory, 'DailyRet.csv')
@@ -40,7 +40,7 @@ month_tag = config.month_tag
 
 # Period dictionary: {Month_T: (Month_T-3, Month_T-1)
 period_dict = {}
-for period in config.month_split:
+for period in month_split:
     start_id = month_tag.index(period[0])
     reg_start_id = month_tag[start_id - 3]
     reg_end_id = month_tag[start_id]
@@ -56,7 +56,23 @@ def get_ssr(reg_res):
     return reg_res.ssr
 
 
+# read result and save
 res = rw.read_result(get_ssr).T
+Sigma_M_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
+res.to_csv(Sigma_M_path)
 
-output_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
-res.to_csv(output_path)
+# Load daily return and market value of all stocks
+all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
+all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
+
+# Create Allocator Object for monthly adjusted groups
+allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
+allocator_M = Allocate.load_pickle(allocator_M_path)
+allocator_M.add_factor('Sigma', Sigma_M_path, replace=True)
+
+MV_Sigma_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV', 'Sigma'], [(0, 0.5, 1),(0, 0.3, 0.7, 1)])
+MV_Sigma_23_panel = generate_panel(all_stocks_data, config.period, MV_Sigma_23_groups)
+MV_Sigma_23_panel_path = os.path.join(config.temp_data_path, 'MV_Sigma_23.p')
+MV_Sigma_23_panel.to_pickle(MV_Sigma_23_panel_path)
+
+

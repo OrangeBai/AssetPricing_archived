@@ -10,19 +10,19 @@ mv_path = os.path.join(config.extracted_directory, r'CirculateMktValue.csv')
 mv = pd.read_csv(mv_path, index_col=0)
 
 month_tags = config.month_tag_all
-mv_monthly = {}
+mv_monthly = {month_tags[0]: np.NaN}
 for i in range(len(month_tags) - 1):
     mv_monthly[month_tags[i + 1]] = mv[month_tags[i]: month_tags[i + 1]].mean()
 
 # Calculate average market value of month T, save to index 'T+1'
-mv_monthly = pd.DataFrame(mv_monthly)
-mv_monthly[month_tags[0]] = np.NaN
+mv_monthly = pd.DataFrame(mv_monthly).T
+
 mv_monthly_path = os.path.join(config.feature_directory, 'M_MktV.csv')
 mv_monthly.to_csv(mv_monthly_path)
 
 
 year_tags = config.year_tag_all
-mv_year = {}
+mv_year = {year_tags[0]: np.NaN}
 for i in range(len(year_tags)-1):
     year_select = mv.loc[year_tags[i]: year_tags[i+1]]
     mv_year[year_tags[i+1]] = year_select.mean()
@@ -39,13 +39,13 @@ all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
 allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
 allocator_M = Allocate.load_pickle(allocator_M_path)
 
-allocator_M.add_factor('MV', mv_monthly_path)
+allocator_M.add_factor('MV', mv_monthly_path, replace=True)
 
 # Create Allocator Object for monthly adjusted groups
 allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
 allocator_Y = Allocate.load_pickle(allocator_Y_path)
 
-allocator_Y.add_factor('MV', mv_year_path)
+allocator_Y.add_factor('MV', mv_year_path, replace=True)
 
 MV_Y_23_groups = allocator_Y.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
 MV_M_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
@@ -59,7 +59,13 @@ MV_Y = MV_Y_23_panel_ret.iloc[:, 0] - MV_Y_23_panel_ret.iloc[:, 2]
 MV_M_23_panel = generate_panel(all_stocks_data, config.period, MV_Y_23_groups)
 MV_M_23_panel_path = os.path.join(config.temp_data_path, 'MV_Y_23.p')
 MV_M_23_panel.to_pickle(MV_Y_23_panel_path)
-MV__M23_panel_ret = MV_Y_23_panel.ret
-MV_M = MV__M23_panel_ret.iloc[:, 0] - MV__M23_panel_ret.iloc[:, 2]
+MV_M23_panel_ret = MV_Y_23_panel.ret
+MV_M = MV_M23_panel_ret.iloc[:, 0] - MV_M23_panel_ret.iloc[:, 2]
+
+MV_Y_day_path = os.path.join(config.factor_path, 'MV_Y_day.csv')
+MV_Y.to_csv(MV_Y_day_path)
+
+MV_M_day_path = os.path.join(config.factor_path, 'MV_M_day.csv')
+MV_M.to_csv(MV_M_day_path)
 
 print(1)

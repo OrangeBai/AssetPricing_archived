@@ -70,7 +70,7 @@ Adj_MV_23_groups = allocator.allocate_stocks_according_to_factors(['MV', 'adjTov
                                                                  [(0, 0.5, 1), (0, 0.3, 0.7, 1)])
 
 Adj_MV_23_panel = generate_panel(all_stocks_data, config.period, Adj_MV_23_groups)
-Adj_MV_23_panel_path = os.path.join(config.temp_data_path, 'mv_adjTover_23')
+Adj_MV_23_panel_path = os.path.join(config.temp_data_path, 'MV_AdjTover_23')
 Adj_MV_23_panel.to_pickle(Adj_MV_23_panel_path)
 Adj_MV_23_panel_ret = Adj_MV_23_panel.ret
 turnover_factor = (Adj_MV_23_panel_ret.iloc[:, 0] - Adj_MV_23_panel_ret.iloc[:, 2] +
