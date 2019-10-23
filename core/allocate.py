@@ -4,6 +4,7 @@ import config as config
 import dill as pickle
 from datetime import datetime
 from copy import deepcopy
+import numpy as np
 from itertools import product
 
 
@@ -65,7 +66,10 @@ class Allocate:
 
         return period_to_ticker
 
-    def add_factor(self, factor_name, factor_path):
+    def add_factor(self, factor_name, factor_path, replace='False'):
+        if factor_name in self.factors.keys() and replace == 'False':
+            print('{0} already exist, replacement failed.')
+            return
         self.factors[factor_name] = pd.read_csv(factor_path, index_col=0)
         print('Adding {0} factor from {1}'.format(factor_name, factor_path))
         return
@@ -160,7 +164,10 @@ class Allocate:
         factor_df = pd.DataFrame(index=tickers)
 
         for factor_name in factors:
-            factor_df[factor_name] = self.factors[factor_name].loc[period[0]]
+            try:
+                factor_df[factor_name] = self.factors[factor_name].loc[period[0]]
+            except ValueError or KeyError:
+                factor_df[factor_name] = np.NaN
             factor_df.drop(factor_df[factor_df[factor_name].isna()].index, inplace=True)
 
         group_to_factors = {}
@@ -220,9 +227,8 @@ class Allocate:
 
     def to_pickle(self, path):
         """
-        Save current object to pickle file for further use.
-        The save folder is set to be default : ~/Root/Data/
-        :param path: File name
+        Save current object to pickle file.
+        :param path: File path
         """
         f = open(path, 'wb')
         pickle.dump(self, f)

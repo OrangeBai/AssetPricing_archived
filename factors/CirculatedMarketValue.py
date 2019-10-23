@@ -1,6 +1,10 @@
 import pandas as pd
+import numpy as np
 import config
 import os
+from core.allocate import *
+from core.portfolio import *
+from core.adv_utlis import *
 
 mv_path = os.path.join(config.extracted_directory, r'CirculateMktValue.csv')
 mv = pd.read_csv(mv_path, index_col=0)
@@ -11,7 +15,8 @@ for i in range(len(month_tags) - 1):
     mv_monthly[month_tags[i + 1]] = mv[month_tags[i]: month_tags[i + 1]].mean()
 
 # Calculate average market value of month T, save to index 'T+1'
-mv_monthly = pd.DataFrame(mv_monthly).T
+mv_monthly = pd.DataFrame(mv_monthly)
+mv_monthly[month_tags[0]] = np.NaN
 mv_monthly_path = os.path.join(config.feature_directory, 'M_MktV.csv')
 mv_monthly.to_csv(mv_monthly_path)
 
@@ -26,5 +31,35 @@ mv_year = pd.DataFrame(mv_year).T
 mv_year_path = os.path.join(config.feature_directory, 'Y_MktV.csv')
 mv_year.to_csv(mv_year_path)
 
+# Load daily return and market value of all stocks
+all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
+all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
+
+# Create Allocator Object for monthly adjusted groups
+allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
+allocator_M = Allocate.load_pickle(allocator_M_path)
+
+allocator_M.add_factor('MV', mv_monthly_path)
+
+# Create Allocator Object for monthly adjusted groups
+allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
+allocator_Y = Allocate.load_pickle(allocator_Y_path)
+
+allocator_Y.add_factor('MV', mv_year_path)
+
+MV_Y_23_groups = allocator_Y.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
+MV_M_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
+
+MV_Y_23_panel = generate_panel(all_stocks_data, config.period, MV_Y_23_groups)
+MV_Y_23_panel_path = os.path.join(config.temp_data_path, 'MV_Y_23.p')
+MV_Y_23_panel.to_pickle(MV_Y_23_panel_path)
+MV_Y_23_panel_ret = MV_Y_23_panel.ret
+MV_Y = MV_Y_23_panel_ret.iloc[:, 0] - MV_Y_23_panel_ret.iloc[:, 2]
+
+MV_M_23_panel = generate_panel(all_stocks_data, config.period, MV_Y_23_groups)
+MV_M_23_panel_path = os.path.join(config.temp_data_path, 'MV_Y_23.p')
+MV_M_23_panel.to_pickle(MV_Y_23_panel_path)
+MV__M23_panel_ret = MV_Y_23_panel.ret
+MV_M = MV__M23_panel_ret.iloc[:, 0] - MV__M23_panel_ret.iloc[:, 2]
 
 print(1)

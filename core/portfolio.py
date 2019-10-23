@@ -1,8 +1,6 @@
-import os
 import pandas as pd
 import dill as pickle
 import config as config
-import time
 
 
 class PortfolioBase:
@@ -47,13 +45,11 @@ class PortfolioBase:
         """
         self.des = description
 
-    def to_pickle(self, name):
+    def to_pickle(self, path):
         """
-        Save current object to pickle file for further use.
-        The save folder is set to be default : ~/Root/Data/
-        :param name: File name
+        Save current object to pickle file.
+        :param path: File name
         """
-        path = os.path.join(config.temp_data_path, name + '.p')
         f = open(path, 'wb')
         pickle.dump(self, f)
 
@@ -66,9 +62,6 @@ class PortfolioBase:
         """
         f = open(file_path, 'rb')
         return pickle.load(f)
-
-    def pp(self):
-        print('1')
 
 
 class Portfolio(PortfolioBase):
