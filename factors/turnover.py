@@ -57,7 +57,7 @@ all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p
 all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
 
 # Create Allocator Object
-allocator_path = os.path.join(config.temp_data_path, 'AllStocksAllocate.p')
+allocator_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
 allocator = Allocate.load_pickle(allocator_path)
 
 # Add features.
@@ -66,15 +66,15 @@ MV_monthly_path = os.path.join(config.feature_directory, 'M_MktV.csv')
 allocator.add_factor('MV', MV_monthly_path)
 
 # allocate all A stocks into 2 * 3 groups to calculate turnover factor
-Adj_MV_23_groups = allocator.allocate_stocks_according_to_factors(['MV', 'adjTover'],
+MV_Adj_23_groups = allocator.allocate_stocks_according_to_factors(['MV', 'adjTover'],
                                                                  [(0, 0.5, 1), (0, 0.3, 0.7, 1)])
 
-Adj_MV_23_panel = generate_panel(all_stocks_data, config.period, Adj_MV_23_groups)
-Adj_MV_23_panel_path = os.path.join(config.temp_data_path, 'MV_AdjTover_23')
-Adj_MV_23_panel.to_pickle(Adj_MV_23_panel_path)
-Adj_MV_23_panel_ret = Adj_MV_23_panel.ret
-turnover_factor = (Adj_MV_23_panel_ret.iloc[:, 0] - Adj_MV_23_panel_ret.iloc[:, 2] +
-                   Adj_MV_23_panel_ret.iloc[:, 3] - Adj_MV_23_panel_ret.iloc[:, 5]) / 2
+MV_Adj_23_panel = generate_panel(all_stocks_data, config.period, MV_Adj_23_groups)
+MV_Adj_23_panel_path = os.path.join(config.temp_data_path, 'MV_AdjTover_23')
+MV_Adj_23_panel.to_pickle(MV_Adj_23_panel_path)
+MV_Adj_23_panel_ret = MV_Adj_23_panel.ret
+turnover_factor = (MV_Adj_23_panel_ret.iloc[:, 0] - MV_Adj_23_panel_ret.iloc[:, 2] +
+                   MV_Adj_23_panel_ret.iloc[:, 3] - MV_Adj_23_panel_ret.iloc[:, 5]) / 2
 
 turnover_factor_path = os.path.join(config.factor_path, 'turnover.csv')
 turnover_factor.to_csv(turnover_path)

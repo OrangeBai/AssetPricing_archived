@@ -70,9 +70,13 @@ allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
 allocator_M = Allocate.load_pickle(allocator_M_path)
 allocator_M.add_factor('Sigma', Sigma_M_path, replace=True)
 
-MV_Sigma_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV', 'Sigma'], [(0, 0.5, 1),(0, 0.3, 0.7, 1)])
+MV_Sigma_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV', 'Sigma'], [(0, 0.5, 1), (0, 0.3, 0.7, 1)])
 MV_Sigma_23_panel = generate_panel(all_stocks_data, config.period, MV_Sigma_23_groups)
 MV_Sigma_23_panel_path = os.path.join(config.temp_data_path, 'MV_Sigma_23.p')
 MV_Sigma_23_panel.to_pickle(MV_Sigma_23_panel_path)
+MV_Sigma_23_panel_ret = MV_Sigma_23_panel.ret
 
+Sigma_Factor = (MV_Sigma_23_panel_ret.iloc[:, 0] - MV_Sigma_23_panel_ret.iloc[:, 2] +
+                MV_Sigma_23_panel_ret.iloc[:, 3] - MV_Sigma_23_panel_ret.iloc[:, 5]) / 2
 
+print(1)
