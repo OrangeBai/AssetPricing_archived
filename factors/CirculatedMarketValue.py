@@ -37,15 +37,12 @@ all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
 
 # Create Allocator Object for monthly adjusted groups
 allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
-allocator_M = Allocate.load_pickle(allocator_M_path)
-
-allocator_M.add_factor('MV', mv_monthly_path, replace=True)
+allocator_M = update_allocator(allocator_M_path, ('MV', mv_monthly_path))
 
 # Create Allocator Object for monthly adjusted groups
 allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
-allocator_Y = Allocate.load_pickle(allocator_Y_path)
+allocator_Y = update_allocator(allocator_Y_path, ('MV', mv_year_path))
 
-allocator_Y.add_factor('MV', mv_year_path, replace=True)
 
 MV_Y_23_groups = allocator_Y.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
 MV_M_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
@@ -63,9 +60,9 @@ MV_M23_panel_ret = MV_Y_23_panel.ret
 MV_M = MV_M23_panel_ret.iloc[:, 0] - MV_M23_panel_ret.iloc[:, 2]
 
 MV_Y_day_path = os.path.join(config.factor_path, 'MV_Y_day.csv')
-MV_Y.to_csv(MV_Y_day_path)
+MV_Y.to_csv(MV_Y_day_path, header=True)
 
 MV_M_day_path = os.path.join(config.factor_path, 'MV_M_day.csv')
-MV_M.to_csv(MV_M_day_path)
+MV_M.to_csv(MV_M_day_path, header=True)
 
 print(1)

@@ -4,7 +4,7 @@ from core.allocate import *
 import config
 
 # Load Feature
-turnover_path = r'/Users/oranbebai/Documents/Data/Finance/Extracted/DailyTurnover.csv'
+turnover_path = os.path.join(config.extracted_directory,'DailyTurnover.csv')
 turnover = pd.read_csv(turnover_path, index_col=0)
 
 stock_nums = turnover.shape[1]  # Number of stocks, M
@@ -73,9 +73,9 @@ MV_Adj_23_panel = generate_panel(all_stocks_data, config.period, MV_Adj_23_group
 MV_Adj_23_panel_path = os.path.join(config.temp_data_path, 'MV_AdjTover_23')
 MV_Adj_23_panel.to_pickle(MV_Adj_23_panel_path)
 MV_Adj_23_panel_ret = MV_Adj_23_panel.ret
-turnover_factor = (MV_Adj_23_panel_ret.iloc[:, 0] - MV_Adj_23_panel_ret.iloc[:, 2] +
+adjTover_factor = (MV_Adj_23_panel_ret.iloc[:, 0] - MV_Adj_23_panel_ret.iloc[:, 2] +
                    MV_Adj_23_panel_ret.iloc[:, 3] - MV_Adj_23_panel_ret.iloc[:, 5]) / 2
 
-turnover_factor_path = os.path.join(config.factor_path, 'turnover.csv')
-turnover_factor.to_csv(turnover_path)
+adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
+adjTover_factor.to_csv(adjTover_factor_path, header=True)
 print(1)

@@ -41,8 +41,9 @@ def get_factors(factor_path, period, market_type='P9709', portfolio='1', mode='d
     month_split = config.month_split
     if mode == 'd':
         mask = (A_factor.index > period[0]) & (A_factor.index < period[1])
-        return A_factor.loc[mask, ['RiskPremium1', 'RiskPremium2', 'SMB1', 'SMB2', 'HML1', 'HML2', 'RMW1', 'RMW2',
+        factors = A_factor.loc[mask, ['RiskPremium1', 'RiskPremium2', 'SMB1', 'SMB2', 'HML1', 'HML2', 'RMW1', 'RMW2',
                                    'CMA1', 'CMA2']].astype('float')
+        return factors.sort_index()
     else:
         factor_month_dict = {}
         for month_period in month_split:
@@ -51,7 +52,8 @@ def get_factors(factor_path, period, market_type='P9709', portfolio='1', mode='d
                 ret = period_ret(A_factor.loc[mask, ['RiskPremium1', 'RiskPremium2', 'SMB1', 'SMB2', 'HML1', 'HML2',
                                                      'RMW1', 'RMW2', 'CMA1', 'CMA2']].astype('float'))
                 factor_month_dict[month_period[0]] = ret
-        return pd.DataFrame(factor_month_dict).T
+
+        return pd.DataFrame(factor_month_dict).T.sort_index()
 
 
 def period_ret(input_df):
@@ -77,4 +79,4 @@ def update_allocator(pickle_path, *args, replace=True):
         except FileExistsError as e:
             print(e)
     allocator.to_pickle(pickle_path)
-    return
+    return allocator
