@@ -5,8 +5,8 @@ all_period = ('1990-01', '2021-01')
 period = ('1997-01', '2019-07')
 
 
-# base_directory = r'/Users/oranbebai/Documents/Data/Finance'
-base_directory = r'F:\DataSet\Finance'
+base_directory = r'/Users/oranbebai/Documents/Data/Finance'
+# base_directory = r'F:\DataSet\Finance'
 raw_directory = os.path.join(base_directory, 'Raw')
 csv_directory = os.path.join(base_directory, 'CSV')
 feature_directory = os.path.join(base_directory, 'Features')

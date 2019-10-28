@@ -2,47 +2,47 @@ from core.rolling_windows import *
 from core.portfolio import *
 from core.allocate import *
 from core.adv_utlis import *
-#
-# # Load the panel data of dependent portfolios
-# ret_path = os.path.join(config.extracted_directory, 'DailyRet.csv')
-# rets = pd.read_csv(ret_path, index_col=0)
-#
-# # Load trade dates
-# trade_dates = rets.index.to_list()
-#
-# # Load factor file of market, SMB, HML
-# factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
-# factors_day = get_factors(factor_path, config.all_period)
-# factors = factors_day.iloc[:, [0, 2, 4]]
-#
-# # Load rf data
-# rf_file_path = os.path.join(config.raw_directory, 'TRD_Nrrate.txt')
-# rf = get_rf_rate(rf_file_path, config.all_period)
-#
-#
-# month_split = config.month_split
-# month_tag = config.month_tag
-#
-# # Period dictionary: {Month_T: (Month_T-3, Month_T-1)
-# period_dict = {}
-# for period in month_split:
-#     start_id = month_tag.index(period[0])
-#     reg_start_id = month_tag[start_id - 3]
-#     reg_end_id = month_tag[start_id]
-#     period_dict[period[0]] = (reg_start_id, reg_end_id)
-#
-# # Fama-French regression is performed for each stock for 120 days
-# rw = RollingWindow(rets, factors, group_by=period_dict)
-# result = rw.regress('group')
-#
-#
-# # Load ssr for each regression
-# def get_ssr(reg_res):
-#     return reg_res.ssr
-#
-#
-# # read result and save
-# res = rw.read_result(get_ssr).T
+
+# Load the panel data of dependent portfolios
+ret_path = os.path.join(config.extracted_directory, 'DailyRet.csv')
+rets = pd.read_csv(ret_path, index_col=0)
+
+# Load trade dates
+trade_dates = rets.index.to_list()
+
+# Load factor file of market, SMB, HML
+factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
+factors_day = get_factors(factor_path, config.all_period)
+factors = factors_day.iloc[:, [0, 2, 4]]
+
+# Load rf data
+rf_file_path = os.path.join(config.raw_directory, 'TRD_Nrrate.txt')
+rf = get_rf_rate(rf_file_path, config.all_period)
+
+
+month_split = config.month_split
+month_tag = config.month_tag
+
+# Period dictionary: {Month_T: (Month_T-3, Month_T-1)
+period_dict = {}
+for period in month_split:
+    start_id = month_tag.index(period[0])
+    reg_start_id = month_tag[start_id - 3]
+    reg_end_id = month_tag[start_id]
+    period_dict[period[0]] = (reg_start_id, reg_end_id)
+
+# Fama-French regression is performed for each stock for 120 days
+rw = RollingWindow(rets, factors, group_by=period_dict)
+result = rw.regress('group')
+
+
+# Load ssr for each regression
+def get_ssr(reg_res):
+    return reg_res.ssr
+
+
+# read result and save
+res = rw.read_result(get_ssr).T
 Sigma_M_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
 # res.to_csv(Sigma_M_path)
 
