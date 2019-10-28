@@ -80,3 +80,14 @@ def update_allocator(pickle_path, *args, replace=True):
             print(e)
     allocator.to_pickle(pickle_path)
     return allocator
+
+
+def gen_panel(panel_name, allocator, feature, all_stocks_data, period):
+    pickle_path = os.path.join(config.temp_data_path, panel_name + '.p')
+    if os.path.exists(pickle_path):
+        panel = Portfolio.load_pickle(pickle_path)
+    else:
+        groups = allocator.allocate_stocks_according_to_factors(feature[0], feature[1])
+        panel = generate_panel(all_stocks_data, period, groups)
+        panel.to_pickle(pickle_path)
+    return panel

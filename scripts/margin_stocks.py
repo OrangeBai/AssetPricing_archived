@@ -1,6 +1,7 @@
 from core.allocate import *
 from core.utils import *
 from core.adv_utlis import *
+from core.regression import *
 
 """
 This script is used for testing the difference of return between portfolios formed by short saleable stocks and 
@@ -33,38 +34,39 @@ for key, tickers in saleable_groups.items():
     non_tickers = [ticker for ticker in config.A_lists if ticker not in tickers]
     non_saleable_groups[key] = non_tickers
 
-
 # Set path of features
-turnover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
+adjTover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
 mv_path = os.path.join(config.feature_directory, 'M_MktV.csv')
+sigma_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
 
 # Add features to allocator
-saleable_allocator = Allocate(tickers=config.A_lists, periods=month_split, period_to_tickers=saleable_groups)
-saleable_allocator.add_factor('adjTover', turnover_path)
-saleable_allocator.add_factor('mv', mv_path)
-
-non_saleable_allocator = Allocate(tickers=config.A_lists, periods=month_split, period_to_tickers=non_saleable_groups)
-non_saleable_allocator.add_factor('adjTover', turnover_path)
-non_saleable_allocator.add_factor('mv', mv_path)
-
+saleable_allocator_path = os.path.join(config.temp_data_path, 'saleable_allocator.p')
+if not os.path.exists(saleable_allocator_path):
+    saleable_allocator = Allocate(tickers=config.A_lists, periods=month_split, period_to_tickers=saleable_groups)
+    saleable_allocator.to_pickle(saleable_allocator_path)
+else:
+    saleable_allocator = Allocate.load_pickle(saleable_allocator_path)
+saleable_allocator = update_allocator(saleable_allocator_path, ('mv', mv_path), ('adjTover', adjTover_path), ('sigma', sigma_path))
 
 # Allocate saleable stocks in to 5 groups/5*5 groups according to adjTover/MV-adjTover
-adjTover_5_groups = saleable_allocator.allocate_stocks_according_to_factors(['adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1)])
-adjTover_MV_55_groups = saleable_allocator.allocate_stocks_according_to_factors(['mv', 'adjTover'],
-                                                        [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)])
-adjTover_5_panel = generate_panel(all_stocks_data, period, adjTover_5_groups)
-adjTover_MV_55_panel = generate_panel(all_stocks_data, period, adjTover_MV_55_groups)
+adjTover_5_panel = gen_panel('adjTover_5_panel', saleable_allocator, (['adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1)]), all_stocks_data, period)
 
+adjTover_MV_55_panel = gen_panel('adjTover_MV_55_panel', saleable_allocator,
+                                 (['mv', 'adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)]), all_stocks_data, period)
 
+non_saleable_allocator_path = os.path.join(config.temp_data_path, 'non_saleable_allocator.p')
+if not os.path.exists(non_saleable_allocator_path):
+    non_saleable_allocator = Allocate(tickers=config.A_lists, periods=month_split, period_to_tickers=non_saleable_groups)
+    non_saleable_allocator.to_pickle(non_saleable_allocator_path)
+else:
+    non_saleable_allocator = Allocate.load_pickle(non_saleable_allocator_path)
+non_saleable_allocator = update_allocator(non_saleable_allocator_path, ('mv', mv_path), ('adjTover', adjTover_path), ('sigma', sigma_path))
 # Allocate non_saleable stocks into 5/5*5 groups according to adjTover/MV-adjTover factors
-nonSale_adjTover_5_groups = non_saleable_allocator.allocate_stocks_according_to_factors(['adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1)])
-nonSale_adjTover_MV_55_groups = non_saleable_allocator.allocate_stocks_according_to_factors(['mv', 'adjTover'],
-                                                             [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)])
+nonSale_adjTover_5_panel = gen_panel('nonSale_adjTover_5_panel_path', non_saleable_allocator,
+                                     (['adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1)]), all_stocks_data, period)
 
-nonSale_adjTover_5_panel = generate_panel(all_stocks_data, period, nonSale_adjTover_5_groups)
-nonSale_adjTover_MV_55_panel = generate_panel(all_stocks_data, period, nonSale_adjTover_MV_55_groups)
-
-
+nonSale_adjTover_MV_55_panel = gen_panel('nonSale_adjTover_MV_55_panel', non_saleable_allocator,
+                                         (['mv', 'adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)]), all_stocks_data, period)
 # Load trade dates
 trd_cale_path = os.path.join(config.raw_directory, 'TRD_Cale.txt')
 trade_dates = get_trade_dates(trd_cale_path, period)
@@ -77,5 +79,10 @@ rf_month = get_rf_rate(rf_path, period, mode='m')
 # Index:    date;
 # Columns: 'RiskPremium1', 'RiskPremium2', 'SMB1', 'SMB2', 'HML1', 'HML2', 'RMW1', 'RMW2', 'CMA1', 'CMA2';
 factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
-factors = get_factors(factor_path, period, mode='m')
+factors = get_factors(factor_path, period, mode='d')
+adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
+factors['adjTover'] = pd.read_csv(adjTover_factor_path, index_col=0)
 
+
+# adjTover_5_panel, adjTover_MV_55_panel, nonSale_adjTover_5_panel, nonSale_adjTover_MV_55_panel
+reg(adjTover_5_panel, x)

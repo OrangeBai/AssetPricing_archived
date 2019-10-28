@@ -4,6 +4,7 @@ import statsmodels.api as sm
 import numpy as np
 import config
 import time
+from core.regression import *
 # Load the panel data of dependent portfolios
 panel = PanelData.load_pickle(r'/Users/oranbebai/Code/Finance/Liquidity/temp_data/mv_turnover.p')
 rets = panel.ret
@@ -91,6 +92,9 @@ result1_p = pd.DataFrame()
 result2_p = pd.DataFrame()
 result3_p = pd.DataFrame()
 st = 12
+
+reg()
+
 for i in range(25):
     name = ret_month.columns.to_list()[i]
     print('{0} \n'.format(name))

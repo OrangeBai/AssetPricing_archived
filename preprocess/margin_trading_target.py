@@ -1,6 +1,7 @@
 from core.portfolio import *
 import config
 import pandas as pd
+import os
 from core.utils import *
 
 start_time = '2010-04'
