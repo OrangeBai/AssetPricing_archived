@@ -44,7 +44,7 @@ def get_ssr(reg_res):
 # read result and save
 res = rw.read_result(get_ssr).T
 Sigma_M_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
-# res.to_csv(Sigma_M_path)
+res.to_csv(Sigma_M_path)
 
 # Load daily return and market value of all stocks
 all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
