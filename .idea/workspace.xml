@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/portfolio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/regression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/factors/Sigma.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/Sigma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/factors/turnover.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/turnover.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/margin_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/margin_stocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/regression.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,11 +26,6 @@
         <option value="Python Script" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>add</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -98,27 +99,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="adv_utlis" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Liquidity" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/adv_utlis.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="all_stocks" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,6 +141,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Liquidity" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/regression.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="turnover" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,18 +186,18 @@
     <list>
       <item itemvalue="Python.CirculatedMarketValue" />
       <item itemvalue="Python.margin_stocks" />
-      <item itemvalue="Python.adv_utlis" />
       <item itemvalue="Python.all_stocks" />
       <item itemvalue="Python.turnover" />
       <item itemvalue="Python.Sigma" />
+      <item itemvalue="Python.regression" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Sigma" />
+        <item itemvalue="Python.margin_stocks" />
+        <item itemvalue="Python.regression" />
         <item itemvalue="Python.turnover" />
         <item itemvalue="Python.all_stocks" />
-        <item itemvalue="Python.margin_stocks" />
-        <item itemvalue="Python.adv_utlis" />
       </list>
     </recent_temporary>
   </component>
@@ -272,127 +273,36 @@
           <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/factors/turnover.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="187" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/rolling_windows.py</url>
           <line>86</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/margin_stocks.py</url>
-          <line>81</line>
-          <option name="timeStamp" value="10" />
+          <line>104</line>
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/regression.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/factors/turnover.py</url>
+          <line>99</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/regression.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/factors/Sigma.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/factors/Sigma.py</url>
-          <line>56</line>
-          <option name="timeStamp" value="190" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/factors/Sigma.py</url>
-          <line>54</line>
-          <option name="timeStamp" value="191" />
+          <line>66</line>
+          <option name="timeStamp" value="205" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateCodeFragment">
-      <expression>
-        <expression-string>factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
-factors = get_factors(factor_path, period, mode='d')
-adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
-factors['adjTover'] = pd.read_csv(adjTover_factor_path, index_col=0)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt') factors = get_factors(factor_path, period, mode='d') adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv') factors['adjTover'] = pd.read_csv(adjTover_factor_path, index_col=0)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>a</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
-factors = get_factors(factor_path, period, mode='m')
-adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
-a = pd.read_csv(adjTover_factor_path)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
-factors = get_factors(factor_path, period, mode='m')
-adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
-factors['adjTover'] = pd.read_csv(adjTover_factor_path)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
-factors['adjTover'] = pd.read_csv(adjTover_factor_path)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>factors</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt') factors = get_factors(factor_path, period, mode='d') adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv') factors['adjTover'] = pd.read_csv(adjTover_factor_path, index_col=0)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>factors['adjTover'] = pd.read_csv(adjTover_factor_path, index_col=0)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>e</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>print(e)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>factor_df[factor_name]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self.factors[factor_name]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self.factors[factor_name].loc[period[0]]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self.dependent</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
 </project>

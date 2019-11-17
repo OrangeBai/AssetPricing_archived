@@ -8,6 +8,7 @@ This script is used for testing the difference of return between portfolios form
 non-short saleable stocks. Fama-french regression is performed for each portfolio with MKT, SMB, HML, adjTover or sigma 
 factor. 
 """
+
 # Load daily return and market value of all stocks
 all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
 all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
@@ -81,8 +82,26 @@ rf_month = get_rf_rate(rf_path, period, mode='m')
 factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
 factors = get_factors(factor_path, period, mode='d')
 adjTover_factor_path = os.path.join(config.factor_path, 'adjTover.csv')
-factors['adjTover'] = pd.read_csv(adjTover_factor_path, index_col=0)
+adjTOver_factor = pd.read_csv(adjTover_factor_path, index_col=0)
+factors['adjTover'] = adjTOver_factor
+
+input_factor = factors.iloc[:, [0, 2, 4]]
+
+input_factor_m = period_ret_all(input_factor, month_split)
+nonSale_adjTover_5_panel_month = period_ret_all(nonSale_adjTover_5_panel.ret, month_split).subtract(rf_month, axis=0)
+adjTover_5_panel_month = period_ret_all(adjTover_5_panel.ret, month_split).subtract(rf_month, axis=0)
 
 
+coef1, t1, p1, r1 = reg(nonSale_adjTover_5_panel_month, input_factor_m)
+coef2, t2, p2, r2 = reg(adjTover_5_panel_month, input_factor_m)
+
+nonSale_adjTover_MV_55_panel_month = period_ret_all(nonSale_adjTover_MV_55_panel.ret,
+                                                    month_split).subtract(rf_month, axis=0)
+adjTover_MV_55_panel_month = period_ret_all(adjTover_MV_55_panel.ret, month_split).subtract(rf_month, axis=0)
+
+coef3, t3, p3, r3 = reg(nonSale_adjTover_MV_55_panel_month, input_factor_m)
+coef4, t4, p4, r4 = reg(adjTover_MV_55_panel_month, input_factor_m)
+
+print(1)
 # adjTover_5_panel, adjTover_MV_55_panel, nonSale_adjTover_5_panel, nonSale_adjTover_MV_55_panel
-reg(adjTover_5_panel, x)
+# reg(adjTover_5_panel, x)

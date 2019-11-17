@@ -103,7 +103,7 @@ class Portfolio(PortfolioBase):
         if weight == 'value':
             self.portfolio_return = (all_stocks_return * all_stocks_mv).sum(axis=1) / all_stocks_mv.sum(axis=1)
         else:
-            self.portfolio_return = all_stocks_return.mean()
+            self.portfolio_return = all_stocks_return.mean(axis=1)
 
         return self.portfolio_return
 
@@ -113,7 +113,7 @@ class PanelData(PortfolioBase):
         super().__init__(period, des)
         self.ret = pd.DataFrame(index=self.trade_dates)
 
-    def add_portfolio(self, name, list_of_portfolio):
+    def add_portfolio(self, name, list_of_portfolio, weight='value'):
         portfolio_return = pd.Series()
         trade_dates = []
         for portfolio in list_of_portfolio:
@@ -121,7 +121,7 @@ class PanelData(PortfolioBase):
             trade_dates.extend(portfolio.trade_dates)
         assert set(self.trade_dates).issubset(trade_dates)
         for portfolio in list_of_portfolio:
-            portfolio_return = portfolio_return.append(portfolio.cal_return())
+            portfolio_return = portfolio_return.append(portfolio.cal_return(weight))
         portfolio_return = portfolio_return[self.trade_dates]
         self.ret[name] = portfolio_return
         return

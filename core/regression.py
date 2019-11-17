@@ -3,14 +3,13 @@ import numpy as np
 import statsmodels.api as sm
 
 
-def reg(panel, x):
+def reg(y, x):
     """
     Regression of panel data on the given factors.
     :param panel: Panel data, data frame of T*N, where T stands for the time length and N is the number of portfolios.
     :param x: Factors, data frame of T*M, where m is the number of factors.(without constant)
     :return:
     """
-    y = panel.ret
     names = y.columns.to_list()
     y = np.array(y)
     x = np.array(x)
@@ -31,7 +30,7 @@ def reg(panel, x):
         coef[port_name] = result.params
         t_value[port_name] = result.tvalues
         p_value[port_name] = result.pvalues
-        adjRsquare[port_name] = result
+        adjRsquare[port_name] = result.rsquared_adj
     coef = coef.T
     t_value = t_value.T
     p_value = p_value.T

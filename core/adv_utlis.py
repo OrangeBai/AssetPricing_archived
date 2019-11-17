@@ -2,13 +2,13 @@ from core.portfolio import *
 from core.rolling_windows import *
 
 
-def generate_panel(all_stocks, period, groups):
+def generate_panel(all_stocks, period, groups, weight):
     cur_panel = PanelData(period)
     for name, period_to_tickers in groups.items():
         current_portfolio_list = []
         for period, tickers in period_to_tickers.items():
             current_portfolio_list.append(all_stocks.retrieve(tickers, period))
-        cur_panel.add_portfolio(name, current_portfolio_list)
+        cur_panel.add_portfolio(name, current_portfolio_list, weight=weight)
     return cur_panel
 
 
@@ -25,7 +25,7 @@ def get_rf_rate(path, period, sep='\t', encoding='gbk', mode='d'):
         month_split = config.month_split
         rf_month_dict = {}
         for month_period in month_split:
-            if month_period[0] >= period[0] and month_period[1] < period[1]:
+            if month_period[0] >= period[0] and month_period[1] <= period[1]:
                 mask = (rf.index > month_period[0]) & (rf.index < month_period[1])
                 rf_month_dict[month_period[0]] = rf.loc[mask, 'Nrrmtdt'].astype('float')[0] / 100
         rf_month = pd.Series(rf_month_dict)
@@ -54,6 +54,15 @@ def get_factors(factor_path, period, market_type='P9709', portfolio='1', mode='d
                 factor_month_dict[month_period[0]] = ret
 
         return pd.DataFrame(factor_month_dict).T.sort_index()
+
+
+def period_ret_all(input_df, month_split):
+    ret_all = {}
+    for month_period in month_split:
+        # mask = (input_df.index > month_period[0]) & (input_df.index < month_period[1])
+        cur_ret = input_df.loc[month_period[0]: month_period[1],:]
+        ret_all[month_period[0]] = period_ret(cur_ret)
+    return pd.DataFrame(ret_all).T.sort_index()
 
 
 def period_ret(input_df):
