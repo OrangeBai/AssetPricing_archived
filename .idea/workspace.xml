@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Liquidity.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Liquidity.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/portfolio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/factors/Sigma.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/Sigma.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/factors/turnover.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/turnover.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/margin_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/margin_stocks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/regression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/allocate.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/allocate.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +17,55 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Liquidity" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="all_stocks.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/all_stocks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="847">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="allocate.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/allocate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2253">
+              <caret line="87" column="66" lean-forward="true" selection-start-line="87" selection-start-column="66" selection-end-line="87" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="650">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,8 +77,54 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/core/allocate.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="980" />
+    <option name="height" value="1050" />
+  </component>
   <component name="ProjectId" id="1Qe8wPizr0PDhBUwpWMm5fabw14" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AssetPricing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AssetPricing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AssetPricing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AssetPricing" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AssetPricing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AssetPricing" type="462c0819:PsiDirectoryNode" />
+              <item name="factors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AssetPricing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AssetPricing" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="D:/Software/Working/Anaconda3/envs/stats/libs" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -56,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Sigma">
+  <component name="RunManager" selected="Python.all_stocks">
     <configuration name="CirculatedMarketValue" type="PythonConfigurationType" factoryName="Python">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,9 +167,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="Sigma" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
@@ -95,9 +185,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="all_stocks" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
@@ -116,9 +203,24 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
+    </configuration>
+    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Liquidity" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="margin_stocks" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
@@ -137,11 +239,8 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
-    <configuration name="regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -149,55 +248,31 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/regression.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/utils.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="turnover" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Liquidity" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/factors" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/factors/turnover.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.CirculatedMarketValue" />
       <item itemvalue="Python.margin_stocks" />
-      <item itemvalue="Python.all_stocks" />
-      <item itemvalue="Python.turnover" />
       <item itemvalue="Python.Sigma" />
-      <item itemvalue="Python.regression" />
+      <item itemvalue="Python.config" />
+      <item itemvalue="Python.utils" />
+      <item itemvalue="Python.all_stocks" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.all_stocks" />
+        <item itemvalue="Python.config" />
+        <item itemvalue="Python.utils" />
         <item itemvalue="Python.Sigma" />
         <item itemvalue="Python.margin_stocks" />
-        <item itemvalue="Python.regression" />
-        <item itemvalue="Python.turnover" />
-        <item itemvalue="Python.all_stocks" />
       </list>
     </recent_temporary>
   </component>
@@ -232,18 +307,50 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" weight="0.32901832" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32901832" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32901832" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.399137" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Some Changes" />
@@ -283,26 +390,119 @@
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/regression.py</url>
-          <line>160</line>
-          <option name="timeStamp" value="202" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/factors/turnover.py</url>
           <line>99</line>
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/regression.py</url>
-          <line>32</line>
+          <line>10</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/factors/Sigma.py</url>
-          <line>66</line>
+          <line>67</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/config.py</url>
+          <line>35</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/config.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/config.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>co_info.loc['000001', 'Indcd'] == 1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>co_info['000001', 'Indcd'] == 1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>config.co_info['000001', 'Indcd'] == 1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>co_info[co_info['Indcd'] == 1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>co_info['Indcd'] == 1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>co_info['Indcd'] == '1'</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>co_info[co_info['Indcd'] == '1']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>co_info['Indcd']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/all_stocks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="847">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/allocate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2253">
+          <caret line="87" column="66" lean-forward="true" selection-start-line="87" selection-start-column="66" selection-end-line="87" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

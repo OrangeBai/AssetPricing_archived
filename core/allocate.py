@@ -9,7 +9,20 @@ from itertools import product
 
 
 class Allocate:
+    """
+    This class is used for allocate stocks into different groups according to their features.
+    """
     def __init__(self, tickers, periods, period_to_tickers=None, num_of_nan=5, list_limitation='year'):
+        """
+        initialization method
+        :param tickers: list of tickers:['000001','000002',...'600001']
+        :param periods: list of tuple: (start_date: yyyy_mm, end_date: yyyy_mm)
+        :param period_to_tickers: selected tickers according to features, i.e. newly listed stocks are excluded.
+                {
+                    (start_date, end_date):[stock_1, stock_2, ..., stock_n]
+        :param num_of_nan: maximim nan number of a stock in a period. If stock_i has more than num_of_nan nan data, it should be excluded.
+        :param list_limitation: A stock should be on list for at least 'list_limitation' date
+        """
         self.tickers = tickers
         self.periods = periods
         self.na_bool = pd.read_csv(os.path.join(config.extracted_directory, 'DailyRet.csv'), index_col=0).isna()
@@ -33,9 +46,10 @@ class Allocate:
         elif self.list_limitation == 'quarter':
             min_diff = 63
         else:
-            min_diff = 252
+            min_diff = 504
 
         for period in self.periods:
+            # during each period, a stocks are filtered according to their list date as well as number of nan.
             period_start = period[0]
             period_end = period[1]
             tickers = []
@@ -44,7 +58,12 @@ class Allocate:
             else:
                 stock_list = self.periods_to_tickers[period]
             for stock in stock_list:
-                if stock not in config.A_lists or stock not in self.na_bool.columns.to_list():  #!!!!!金融，st
+                if stock not in config.A_lists or stock not in self.na_bool.columns.to_list():
+                    # if stock is not in A list, or there are too many nan data, the ticker is excluded.
+                    self.tickers.remove(stock)
+                    continue
+                if config.co_info.loc[stock, 'Indcd'] == 1:
+                    # if stock belongs to Finance related, it should be excluded.
                     self.tickers.remove(stock)
                     continue
                 list_date = datetime.strptime(config.co_list_date[stock], '%Y-%m-%d')
