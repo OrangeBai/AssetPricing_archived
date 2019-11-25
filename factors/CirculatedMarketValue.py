@@ -1,29 +1,28 @@
-import pandas as pd
-import numpy as np
-import config
-import os
-from core.allocate import *
-from core.portfolio import *
 from core.adv_utlis import *
+"""
+This script is used to extract circulated market value of all stocks in all period.
+"""
 
+# Config mv path and read data
 mv_path = os.path.join(config.extracted_directory, r'CirculateMktValue.csv')
 mv = pd.read_csv(mv_path, index_col=0)
 
+# read month tags
 month_tags = config.month_tag_all
 mv_monthly = {month_tags[0]: np.NaN}
 for i in range(len(month_tags) - 1):
+    # Since the mv data is often used for allocate stocks and predict, MV of month N is record with tag N+1 for further use
     mv_monthly[month_tags[i + 1]] = mv[month_tags[i]: month_tags[i + 1]].mean()
 
-# Calculate average market value of month T, save to index 'T+1'
 mv_monthly = pd.DataFrame(mv_monthly).T
-
 mv_monthly_path = os.path.join(config.feature_directory, 'M_MktV.csv')
 mv_monthly.to_csv(mv_monthly_path)
 
-
+# read year data
 year_tags = config.year_tag_all
 mv_year = {year_tags[0]: np.NaN}
 for i in range(len(year_tags)-1):
+    # Since the mv data is often used for allocate stocks and predict, MV of month N is record with tag N+1 for further use
     year_select = mv.loc[year_tags[i]: year_tags[i+1]]
     mv_year[year_tags[i+1]] = year_select.mean()
 
@@ -43,7 +42,7 @@ allocator_M = update_allocator(allocator_M_path, ('MV', mv_monthly_path))
 allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
 allocator_Y = update_allocator(allocator_Y_path, ('MV', mv_year_path))
 
-
+# Allocate stocks in to 2*3 groups according to mv
 MV_Y_23_groups = allocator_Y.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
 MV_M_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV'], [(0, 0.3, 0.7, 1)])
 

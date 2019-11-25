@@ -132,3 +132,8 @@ class RollingWindow:
         """
         f = open(file_path, 'rb')
         return pickle.load(f)
+
+
+# Load ssr for each regression
+def get_ssr(reg_res):
+    return reg_res.ssr

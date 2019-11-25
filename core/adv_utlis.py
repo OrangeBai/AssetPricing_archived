@@ -2,7 +2,7 @@ from core.portfolio import *
 from core.rolling_windows import *
 
 
-def generate_panel(all_stocks, period, groups, weight):
+def generate_panel(all_stocks, period, groups, weight='value'):
     cur_panel = PanelData(period)
     for name, period_to_tickers in groups.items():
         current_portfolio_list = []
