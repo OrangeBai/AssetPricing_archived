@@ -37,27 +37,17 @@ result = rw.regress('group')
 
 # read result and save
 res = rw.read_result(get_ssr).T
-Sigma_M_path = os.path.join(config.feature_directory, 'M_Sigma_Cur.csv')
-res.to_csv(Sigma_M_path)
 
-# # Load daily return and market value of all stocks
-# all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
-# all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
-#
-# # Create Allocator Object for monthly adjusted groups
-# allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
-# allocator_M = update_allocator(allocator_M_path, ('Sigma', Sigma_M_path))
-#
-# MV_Sigma_23_groups = allocator_M.allocate_stocks_according_to_factors(['MV', 'Sigma'], [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)])
-# MV_Sigma_23_panel = generate_panel(all_stocks_data, config.period, MV_Sigma_23_groups, weight='equal')
-# MV_Sigma_23_panel_path = os.path.join(config.temp_data_path, 'MV_Sigma_E_55.p')
-# MV_Sigma_23_panel.to_pickle(MV_Sigma_23_panel_path)
-# MV_Sigma_23_panel_ret = MV_Sigma_23_panel.ret
-#
-#
-# Sigma_Factor = (MV_Sigma_23_panel_ret.iloc[:, 0] - MV_Sigma_23_panel_ret.iloc[:, 2] +
-#                 MV_Sigma_23_panel_ret.iloc[:, 3] - MV_Sigma_23_panel_ret.iloc[:, 5]) / 2
-#
-#
-# Sigma_Factor_path = os.path.join(config.factor_path, 'Sigma.csv')
-# Sigma_Factor.to_csv(Sigma_Factor_path, header=True)
+# Create cur_sigma and one-month-lag Sigma DataFrame
+new_df = res.iloc[1:]   # Current Sigma
+new_idx = res.index.to_list()[:-1]
+new_df.index = new_idx
+
+res = res.iloc[:-1, :]  # One-month-lag
+
+Sigma_M_Cur_path = os.path.join(config.feature_directory, 'M_Sigma_Cur.csv')
+Sigma_M_Pre_path = os.path.join(config.feature_directory, 'M_Sigma_Pre.csv')
+
+res.to_csv(Sigma_M_Pre_path)
+new_df.to_csv(Sigma_M_Cur_path)
+

@@ -124,12 +124,20 @@ class Allocate:
         :return: Factor
         """
         period_to_group_tickers = {}
+        total_periods = len(self.periods)
+        counter = 0
         if sequentially:
             for period in self.periods:
                 period_to_group_tickers[period] = self.allocate_in_one_period_sequentially(factors, percentage, period)
+                counter = counter + 1
+                l1 = counter * 50 // total_periods
+                print('Progress Bar: {0:><{len1}}{1:=<{len2}}. {2} of {3}'.format('>', '=', counter, total_periods, len1=l1, len2=50 - l1, ))
         else:
             for period in self.periods:
                 period_to_group_tickers[period] = self.allocate_in_one_period_mixed(factors, percentage, period)
+                counter = counter + 1
+                l1 = counter * 50 // total_periods
+                print('Progress Bar: {0:><{len1}}{1:=<{len2}}. {2} of {3}'.format('>', '=', counter, total_periods, len1=l1, len2=50 - l1, ))
 
         group_to_period_to_tickers = {}
         for period, group_to_tickers in period_to_group_tickers.items():

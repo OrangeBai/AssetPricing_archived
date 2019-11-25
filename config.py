@@ -1,17 +1,20 @@
 import os
 from core.utils import *
-
+from sys import platform
 all_period = ('1990-01', '2021-01')
 period = ('1997-01', '2019-07')
 
+if platform == 'darwin':
+    base_directory = r'/Users/oranbebai/Documents/Data/Finance'
+else:
+    base_directory = r'F:\DataSet\Finance'
 
-# base_directory = r'/Users/oranbebai/Documents/Data/Finance'
-base_directory = r'F:\DataSet\Finance'
 raw_directory = os.path.join(base_directory, 'Raw')
 csv_directory = os.path.join(base_directory, 'CSV')
 feature_directory = os.path.join(base_directory, 'Features')
 extracted_directory = os.path.join(base_directory, 'Extracted')
 factor_path = os.path.join(base_directory, 'Factors')
+output_directory = os.path.join(base_directory, 'Output')
 
 calendar_path = os.path.join(raw_directory, r'TRD_Cale.txt')
 trade_dates = get_trade_dates(calendar_path, period)
