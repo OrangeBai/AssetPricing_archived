@@ -19,7 +19,7 @@ month_split = get_split(period)[0]
 month_tag = get_split(period)[3]
 
 # Read short sell target
-saleable_target_path = os.path.join(config.feature_directory, 'ShortSellTarget.csv')
+saleable_target_path = os.path.join(config.extracted_directory, 'ShortSellTarget.csv')
 saleable_pd = pd.read_csv(saleable_target_path, index_col=0)
 
 # period_to_tickers dictionary of short sell targets

@@ -41,8 +41,8 @@ for num, row in rq_file.iterrows():
 margin_target = pd.DataFrame(Margin_Buy).fillna(0)
 short_target = pd.DataFrame(Sell_Out).fillna(0)
 
-margin_target_path = os.path.join(config.feature_directory, 'MarginTradingTarget.csv')
-short_target_path = os.path.join(config.feature_directory, 'ShortSellTarget.csv')
+margin_target_path = os.path.join(config.extracted_directory, 'MarginTradingTarget.csv')
+short_target_path = os.path.join(config.extracted_directory, 'ShortSellTarget.csv')
 
 margin_target.to_csv(margin_target_path)
 short_target.to_csv(short_target_path)

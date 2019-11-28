@@ -30,6 +30,7 @@ class Allocate:
         self.list_limitation = list_limitation
 
         self.periods_to_tickers = period_to_tickers
+
         self._filter__()
 
         self.factors = {}
@@ -48,6 +49,16 @@ class Allocate:
         else:
             min_diff = 504
 
+        for stock in self.tickers:
+            if stock not in config.A_lists or stock not in self.na_bool.columns.to_list():
+                # if stock is not in A list, or there are too many nan data, the ticker is excluded.
+                self.tickers.remove(stock)
+                continue
+            if config.co_info.loc[stock, 'Indcd'] == 1:
+                # if stock belongs to Finance related, it should be excluded.
+                self.tickers.remove(stock)
+                continue
+
         for period in self.periods:
             # during each period, a stocks are filtered according to their list date as well as number of nan.
             period_start = period[0]
@@ -56,16 +67,8 @@ class Allocate:
             if self.periods_to_tickers is None:
                 stock_list = self.tickers
             else:
-                stock_list = self.periods_to_tickers[period]
+                stock_list = [ticker for ticker in self.periods_to_tickers[period] if ticker in self.tickers]
             for stock in stock_list:
-                if stock not in config.A_lists or stock not in self.na_bool.columns.to_list():
-                    # if stock is not in A list, or there are too many nan data, the ticker is excluded.
-                    self.tickers.remove(stock)
-                    continue
-                if config.co_info.loc[stock, 'Indcd'] == 1:
-                    # if stock belongs to Finance related, it should be excluded.
-                    self.tickers.remove(stock)
-                    continue
                 list_date = datetime.strptime(config.co_list_date[stock], '%Y-%m-%d')
                 current_date = datetime.strptime(period_start, '%Y-%m')
                 diff = current_date - list_date
