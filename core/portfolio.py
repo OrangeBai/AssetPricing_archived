@@ -112,6 +112,7 @@ class PanelData(PortfolioBase):
     def __init__(self, period, des=''):
         super().__init__(period, des)
         self.ret = pd.DataFrame(index=self.trade_dates)
+        self.group = None
 
     def add_portfolio(self, name, list_of_portfolio, weight='value'):
         portfolio_return = pd.Series()
@@ -125,3 +126,6 @@ class PanelData(PortfolioBase):
         portfolio_return = portfolio_return[self.trade_dates]
         self.ret[name] = portfolio_return
         return
+
+    def set_group(self, group):
+        self.group = group

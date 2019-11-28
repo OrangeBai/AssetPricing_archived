@@ -2,6 +2,58 @@ from core.portfolio import *
 from core.rolling_windows import *
 
 
+def allocate(features_file, features, breakpoints, output_file, allocator_file, data_file, period):
+    """
+    allocate stocks.
+    :param features_file: file name of features.
+    :param features: name of the features.
+    :param breakpoints: breakpoints, {'5*5', '2*3', '5'}.
+    :param output_file: file name of output files.
+    :param allocator_file: File name of allocator.
+    :param data_file: File name of stock Data.
+    :param period: period of panel data.
+    :return:
+    """
+    if breakpoints == '5*5':
+        split = [(0, 0.2, 0.4, 0.6, 0.8, 1.0), (0, 0.2, 0.4, 0.6, 0.8, 1.0)]
+    elif breakpoints == '2*3':
+        split = [(0, 0.5, 1), (0, 0.3, 0.7, 1)]
+    elif breakpoints == '5':
+        split = [(0, 0.2, 0.4, 0.6, 0.8, 1.0)]
+    else:
+        raise ValueError('Invalid input')
+
+    try:
+        assert len(features) == len(split)
+        assert len(features) == len(features_file)
+    except AssertionError as e:
+        raise AssertionError('Length of features, features path and split should be equal')
+
+    print("feature: {0}\nbreakpoint:{1}\nfile_path:{2}\n".format(features, split, features_file))
+
+    # Load daily return and market value of all stocks
+    all_stocks_data_path = os.path.join(config.temp_data_path, data_file)
+    all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
+
+    # Load features of all stocks
+    all_stocks_feature_path = os.path.join(config.temp_data_path, allocator_file)
+    all_stocks_feature = Allocate.load_pickle(all_stocks_feature_path)
+
+    feature_path_zip = zip(features, features_file)
+    for i in feature_path_zip:
+        feature_path = os.path.join(config.feature_directory, i[1])
+        all_stocks_feature.add_factor(i[0], feature_path)
+
+    print('Allocation start')
+    # allocate all A stocks into 2 * 3 groups to calculate turnover factor
+    groups = all_stocks_feature.allocate_stocks_according_to_factors(features, split)
+    panel = generate_panel(all_stocks_data, period, groups)
+    output_file_path = os.path.join(config.panel_data_directory, features_file + '.p')
+    panel.to_pickle(output_file_path)
+
+    return panel
+
+
 def generate_panel(all_stocks, period, groups, weight='value'):
     cur_panel = PanelData(period)
     for name, period_to_tickers in groups.items():
@@ -9,6 +61,7 @@ def generate_panel(all_stocks, period, groups, weight='value'):
         for period, tickers in period_to_tickers.items():
             current_portfolio_list.append(all_stocks.retrieve(tickers, period))
         cur_panel.add_portfolio(name, current_portfolio_list, weight=weight)
+    cur_panel.set_group(groups)
     return cur_panel
 
 

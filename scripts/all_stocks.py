@@ -24,11 +24,6 @@ allocator_M = Allocate(config.A_lists, config.month_split)
 allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
 allocator_M.to_pickle(allocator_M_path)
 
-
-adjTover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
-mktValue_path = os.path.join(config.feature_directory, 'M_MktV.csv')
-sigma_path = os.path.join(config.feature_directory, 'M_Sigma.csv')
-
 allocator_Y = Allocate(config.A_lists, config.year_split, num_of_nan=40)
 allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
 allocator_Y.to_pickle(allocator_Y_path)
