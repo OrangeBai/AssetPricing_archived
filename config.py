@@ -15,7 +15,7 @@ feature_directory = os.path.join(base_directory, 'Features')
 extracted_directory = os.path.join(base_directory, 'Extracted')
 factor_path = os.path.join(base_directory, 'Factors')
 output_directory = os.path.join(base_directory, 'Output')
-panel_data_directory = os.path.join(base_directory, 'Panel_data_path')
+panel_data_directory = os.path.join(base_directory, 'Panel')
 temp_data_path = os.path.join(base_directory, 'Temp_data')
 
 calendar_path = os.path.join(raw_directory, r'TRD_Cale.txt')
