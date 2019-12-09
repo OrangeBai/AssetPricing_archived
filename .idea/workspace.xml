@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/generate_latex_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/reg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/allocate_portfolios.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/allocate_portfolios.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/margin_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/margin_stocks.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +51,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.generate_latex_table">
+  <component name="RunManager" selected="Python.allocate_portfolios">
     <configuration name="CirculatedMarketValue" type="PythonConfigurationType" factoryName="Python">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -192,9 +188,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.allocate_portfolios" />
         <item itemvalue="Python.generate_latex_table" />
         <item itemvalue="Python.adv_utlis" />
-        <item itemvalue="Python.allocate_portfolios" />
         <item itemvalue="Python.margin_stocks" />
         <item itemvalue="Python.margin_trading_target" />
       </list>
@@ -256,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575301186919</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Default Changelist">
+      <created>1575629695041</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575629695041</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
