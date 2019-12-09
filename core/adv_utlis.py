@@ -1,5 +1,6 @@
 from core.portfolio import *
 from core.rolling_windows import *
+from core.utils import *
 
 
 def allocate(features_file, features, breakpoints, output_file, allocator_file, data_file, period):
@@ -102,9 +103,11 @@ def get_factors(period, market_type='P9709', portfolio='1', factor_path=None):
     return factors.sort_index()
 
 
-def period_ret_all(input_df, month_split):
+def period_ret_all(input_df, month_split, period=None):
     ret_all = {}
-    for month_period in month_split:
+    start_month = get_month(input_df.index[0])
+    end_month = get_month(input_df.index[-1])
+    for month_period in [month for month in month_split if start_month <= month[0] <= end_month]:
         # mask = (input_df.index > month_period[0]) & (input_df.index < month_period[1])
         cur_ret = input_df.loc[month_period[0]: month_period[1], :]
         ret_all[month_period[0]] = period_ret(cur_ret)

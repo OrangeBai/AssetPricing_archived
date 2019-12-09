@@ -41,3 +41,7 @@ def get_split(period):
     return month_split, quarter_split, year_split, month_tag, quarter_tag, year_tag
 
 
+def get_month(date):
+    date = datetime.strptime(date, '%Y-%m-%d')
+    month_str = date.strftime('%Y-%m')
+    return month_str

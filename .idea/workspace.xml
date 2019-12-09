@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/allocate_portfolios.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/allocate_portfolios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generate_latex_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_latex_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reg.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reg.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +141,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="margin_stocks" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="reg" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -148,7 +153,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/margin_stocks.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/reg.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,7 +162,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="margin_trading_target" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,11 +170,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/preprocess" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocess/margin_trading_target.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/utils.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -181,18 +186,18 @@
     <list>
       <item itemvalue="Python.CirculatedMarketValue" />
       <item itemvalue="Python.allocate_portfolios" />
-      <item itemvalue="Python.margin_stocks" />
-      <item itemvalue="Python.margin_trading_target" />
       <item itemvalue="Python.generate_latex_table" />
       <item itemvalue="Python.adv_utlis" />
+      <item itemvalue="Python.utils" />
+      <item itemvalue="Python.reg" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.allocate_portfolios" />
+        <item itemvalue="Python.reg" />
         <item itemvalue="Python.generate_latex_table" />
+        <item itemvalue="Python.utils" />
         <item itemvalue="Python.adv_utlis" />
-        <item itemvalue="Python.margin_stocks" />
-        <item itemvalue="Python.margin_trading_target" />
       </list>
     </recent_temporary>
   </component>
@@ -259,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575629695041</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Default Changelist">
+      <created>1575904874197</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575904874198</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,13 +297,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/adv_utlis.py</url>
-          <line>53</line>
+          <line>54</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
-          <line>35</line>
+          <line>51</line>
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/reg.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

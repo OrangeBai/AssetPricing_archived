@@ -23,94 +23,43 @@ import os
 # data_file = args.data_file
 # period = args.period
 #
-# """
-# Allocate Panels according to Sigma
-# """
+"""
+Allocate Panels according to Sigma
+"""
+
 # # Generate Panels of all stocks, from 1997-01 to 2010-03
-allocator_file = 'Allocator_M.p'
-data_file = 'AllStocksPortfolio.p'
-period = ('1997-01', '2010-04')
+# allocator_file = 'Allocator_M.p'
+# data_file = 'AllStocksPortfolio.p'
+# period = ('1997-01', '2010-04')
 #
-# # Market Value and Current Sigma 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_Sigma_Cur.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '5*5'
-# output_file = 'MV_Sigma_Cur_55.p'
+# allocate(['M_MktV.csv', 'M_Sigma_Cur.csv'], ['MV', 'Sigma'], '5*5',
+#          'MV_Sigma_Cur_55.p', allocator_file, data_file, period)
 #
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+# allocate(['M_MktV.csv', 'M_Sigma_Pre.csv'], ['MV', 'Sigma'], '5*5',
+#          'MV_Sigma_Pre_55.p', allocator_file, data_file, period)
 #
-# # Market Value ane Previous Sigma 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_Sigma_Pre.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '5*5'
-# output_file = 'MV_Sigma_Pre_55.p'
+# allocate(['M_Sigma_Cur.csv'], ['Sigma'], '5',
+#          'Sigma_Cur_5.p', allocator_file, data_file, period)
 #
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+# allocate(['M_Sigma_Pre.csv'], ['Sigma'], '5',
+#          'Sigma_Pre_5.p', allocator_file, data_file, period)
 #
-#
-# # Market Value and Current Sigma 5*5 groups
-feature_files = ['M_Sigma_Cur.csv']
-features = ['Sigma']
-breakpoints = '5'
-output_file = 'Sigma_Cur_5.p'
-
-allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-
-# Market Value ane Previous Sigma 5*5 groups
-feature_files = ['M_Sigma_Pre.csv']
-features = ['Sigma']
-breakpoints = '5'
-output_file = 'Sigma_Pre_5.p'
-
-allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-
 # # Generate Panels of non-saleable stocks, from 2010-04 to 2019-06
 # data_file = 'AllStocksPortfolio.p'
 # allocator_file = 'non_saleable_allocator.p'
 # period = ('2010-04', '2019-07')
 #
+# allocate(['M_MktV.csv', 'M_Sigma_Cur.csv'], ['MV', 'Sigma'], '5*5',
+#          'Non_Saleable_MV_Sigma_Cur_55.p', allocator_file, data_file, period)
 #
-# feature_files = ['M_MktV.csv', 'M_Sigma_Cur.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '5*5'
-# output_file = 'Non_Saleable_MV_Sigma_Cur_55.p'
+# allocate(['M_MktV.csv', 'M_Sigma_Pre.csv'], ['MV', 'Sigma'], '5*5',
+#          'Non_Saleable_MV_Sigma_Pre_55.p', allocator_file, data_file, period)
 #
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+# allocate(['M_Sigma_Cur.csv'], ['Sigma'], '5',
+#          'Non_Saleable_Sigma_Cur_5.p', allocator_file, data_file, period)
 #
-# feature_files = ['M_MktV.csv', 'M_Sigma_Pre.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '5*5'
-# output_file = 'Non_Saleable_MV_Sigma_Pre_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_MktV.csv', 'M_Sigma_Pre.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '5*5'
-# output_file = 'MV_Sigma_Pre_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-#
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'non_saleable_allocator.p'
-# period = ('2010-04', '2019-07')
-#
-#
-# feature_files = ['M_Sigma_Cur.csv']
-# features = ['Sigma']
-# breakpoints = '5'
-# output_file = 'Non_Saleable_Sigma_Cur_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_Sigma_Pre.csv']
-# features = ['Sigma']
-# breakpoints = '5'
-# output_file = 'Non_Saleable_Sigma_Pre_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
+# allocate(['M_Sigma_Pre.csv'], ['Sigma'], '5',
+#          'Non_Saleable_Sigma_Pre_5.p', allocator_file, data_file, period)
 #
 # # Generate panels of saleable stocks, from 2010-04 to 2019-06
 # data_file = 'AllStocksPortfolio.p'
@@ -123,204 +72,90 @@ allocate(feature_files, features, breakpoints, output_file, allocator_file, data
 # breakpoints = '5*5'
 # output_file = 'Saleable_MV_Sigma_Cur_55.p'
 #
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+# allocate(['M_MktV.csv', 'M_Sigma_Cur.csv'], ['MV', 'Sigma'], '5*5',
+#          'Saleable_MV_Sigma_Cur_55.p', allocator_file, data_file, period)
 #
-# # Market Value and Previous Sigma 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_Sigma_Pre.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '5*5'
-# output_file = 'Saleable_MV_Sigma_Pre_55.p'
+# allocate(['M_MktV.csv', 'M_Sigma_Pre.csv'], ['MV', 'Sigma'], '5*5',
+#          'Saleable_MV_Sigma_Pre_55.p', allocator_file, data_file, period)
 #
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+# allocate(['M_Sigma_Cur.csv'], ['Sigma'], '5',
+#          'Saleable_Sigma_Cur_5.p', allocator_file, data_file, period)
+#
+# allocate(['M_Sigma_Pre.csv'], ['Sigma'], '5',
+#          'Saleable_Sigma_Pre_5.p', allocator_file, data_file, period)
+#
+# Generate Panels of 2*3 groups, from 1997-01 to 2019-06
+data_file = 'AllStocksPortfolio.p'
+allocator_file = 'Allocator_M.p'
+period = config.period
 
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'saleable_allocator.p'
-# period = ('2010-04', '2019-07')
-#
-# # Market Value and Current Sigma 5*5 groups
-# feature_files = ['M_Sigma_Cur.csv']
-# features = ['Sigma']
-# breakpoints = '5'
-# output_file = 'Saleable_Sigma_Cur_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# # Market Value and Previous Sigma 5*5 groups
-# feature_files = ['M_Sigma_Pre.csv']
-# features = ['Sigma']
-# breakpoints = '5'
-# output_file = 'Saleable_Sigma_Pre_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+allocate(['M_MktV.csv', 'M_Sigma_Cur.csv'], ['MV', 'Sigma'], '2*3',
+         'MV_Sigma_Cur_23.p', allocator_file, data_file, period)
 
-# # Generate Panels of 2*3 groups, from 1997-01 to 2019-06
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'Allocator_M.p'
-# period = config.period
-#
-#
-# feature_files = ['M_MktV.csv', 'M_Sigma_Cur.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '2*3'
-# output_file = 'MV_Sigma_Cur_23.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_MktV.csv', 'M_Sigma_Pre.csv']
-# features = ['MV', 'Sigma']
-# breakpoints = '2*3'
-# output_file = 'MV_Sigma_Pre_23.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-#
-# """
-# Allocate Panels according to AdjTover
-# """
-# # Generate Panels of all stocks, from 1997-01 to 2010-03
+allocate(['M_MktV.csv', 'M_Sigma_Pre.csv'], ['MV', 'Sigma'], '2*3',
+         'MV_Sigma_Pre_23.p', allocator_file, data_file, period)
+
+
+# Generate Panels of all stocks, from 1997-01 to 2010-03
 allocator_file = 'Allocator_M.p'
 data_file = 'AllStocksPortfolio.p'
 period = ('1997-01', '2010-04')
-#
-# # Market Value and Current AdjTover 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Cur.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'MV_AdjTover_Cur_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# # Market Value ane Previous AdjTover 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Pre.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'MV_AdjTover_Pre_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-#
-# Market Value and Current AdjTover 5 groups
-feature_files = ['M_AdjTover_Cur.csv']
-features = ['AdjTover']
-breakpoints = '5'
-output_file = 'AdjTover_Cur_5.p'
 
-allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+allocate(['M_MktV.csv', 'M_AdjTover_Cur.csv'], ['MV', 'AdjTover'], '5*5',
+         'MV_AdjTover_Cur_55.p', allocator_file, data_file, period)
 
-# Market Value ane Previous AdjTover 5*5 groups
-feature_files = ['M_AdjTover_Pre.csv']
-features = ['AdjTover']
-breakpoints = '5'
-output_file = 'AdjTover_Pre_5.p'
+allocate(['M_MktV.csv', 'M_AdjTover_Pre.csv'], ['MV', 'AdjTover'], '5*5',
+         'MV_AdjTover_Pre_55.p', allocator_file, data_file, period)
 
-allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-#
-# # Generate Panels of non-saleable stocks, from 2010-04 to 2019-06
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'non_saleable_allocator.p'
-# period = ('2010-04', '2019-07')
-#
-#
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Cur.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'Non_Saleable_MV_AdjTover_Cur_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Pre.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'Non_Saleable_MV_AdjTover_Pre_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Pre.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'MV_AdjTover_Pre_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-#
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'non_saleable_allocator.p'
-# period = ('2010-04', '2019-07')
-#
-#
-# feature_files = ['M_AdjTover_Cur.csv']
-# features = ['AdjTover']
-# breakpoints = '5'
-# output_file = 'Non_Saleable_AdjTover_Cur_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_AdjTover_Pre.csv']
-# features = ['AdjTover']
-# breakpoints = '5'
-# output_file = 'Non_Saleable_AdjTover_Pre_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-#
-# # Generate panels of saleable stocks, from 2010-04 to 2019-06
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'saleable_allocator.p'
-# period = ('2010-04', '2019-07')
-#
-# # Market Value and Current AdjTover 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Cur.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'Saleable_MV_AdjTover_Cur_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# # Market Value and Previous AdjTover 5*5 groups
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Pre.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '5*5'
-# output_file = 'Saleable_MV_AdjTover_Pre_55.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'saleable_allocator.p'
-# period = ('2010-04', '2019-07')
-#
-# # Market Value and Current AdjTover 5*5 groups
-# feature_files = ['M_AdjTover_Cur.csv']
-# features = ['AdjTover']
-# breakpoints = '5'
-# output_file = 'Saleable_AdjTover_Cur_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# # Market Value and Previous AdjTover 5*5 groups
-# feature_files = ['M_AdjTover_Pre.csv']
-# features = ['AdjTover']
-# breakpoints = '5'
-# output_file = 'Saleable_AdjTover_Pre_5.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# # Generate Panels of 2*3 groups, from 1997-01 to 2019-06
-# data_file = 'AllStocksPortfolio.p'
-# allocator_file = 'Allocator_M.p'
-# period = config.period
-#
-#
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Cur.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '2*3'
-# output_file = 'MV_AdjTover_Cur_23.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
-#
-# feature_files = ['M_MktV.csv', 'M_AdjTover_Pre.csv']
-# features = ['MV', 'AdjTover']
-# breakpoints = '2*3'
-# output_file = 'MV_AdjTover_Pre_23.p'
-#
-# allocate(feature_files, features, breakpoints, output_file, allocator_file, data_file, period)
+allocate(['M_AdjTover_Cur.csv'], ['AdjTover'], '5',
+         'AdjTover_Cur_5.p', allocator_file, data_file, period)
+
+allocate(['M_AdjTover_Pre.csv'], ['AdjTover'], '5',
+         'AdjTover_Pre_5.p', allocator_file, data_file, period)
+
+# Generate Panels of non-saleable stocks, from 2010-04 to 2019-06
+data_file = 'AllStocksPortfolio.p'
+allocator_file = 'non_saleable_allocator.p'
+period = ('2010-04', '2019-07')
+
+allocate(['M_MktV.csv', 'M_AdjTover_Cur.csv'], ['MV', 'AdjTover'], '5*5',
+         'Non_Saleable_MV_AdjTover_Cur_55.p', allocator_file, data_file, period)
+
+allocate(['M_MktV.csv', 'M_AdjTover_Pre.csv'], ['MV', 'AdjTover'], '5*5',
+         'Non_Saleable_MV_AdjTover_Pre_55.p', allocator_file, data_file, period)
+
+allocate(['M_AdjTover_Cur.csv'], ['AdjTover'], '5',
+         'Non_Saleable_AdjTover_Cur_5.p', allocator_file, data_file, period)
+
+allocate(['M_AdjTover_Pre.csv'], ['AdjTover'], '5',
+         'Non_Saleable_AdjTover_Pre_5.p', allocator_file, data_file, period)
+
+# Generate panels of saleable stocks, from 2010-04 to 2019-06
+data_file = 'AllStocksPortfolio.p'
+allocator_file = 'saleable_allocator.p'
+period = ('2010-04', '2019-07')
+
+# Market Value and Current AdjTover 5*5 groups
+
+allocate(['M_MktV.csv', 'M_AdjTover_Cur.csv'], ['MV', 'AdjTover'], '5*5',
+         'Saleable_MV_AdjTover_Cur_55.p', allocator_file, data_file, period)
+
+allocate(['M_MktV.csv', 'M_AdjTover_Pre.csv'], ['MV', 'AdjTover'], '5*5',
+         'Saleable_MV_AdjTover_Pre_55.p', allocator_file, data_file, period)
+
+allocate(['M_AdjTover_Cur.csv'], ['AdjTover'], '5',
+         'Saleable_AdjTover_Cur_5.p', allocator_file, data_file, period)
+
+allocate(['M_AdjTover_Pre.csv'], ['AdjTover'], '5',
+         'Saleable_AdjTover_Pre_5.p', allocator_file, data_file, period)
+
+# Generate Panels of 2*3 groups, from 1997-01 to 2019-06
+data_file = 'AllStocksPortfolio.p'
+allocator_file = 'Allocator_M.p'
+period = config.period
+
+allocate(['M_MktV.csv', 'M_AdjTover_Cur.csv'], ['MV', 'AdjTover'], '2*3',
+         'MV_AdjTover_Cur_23.p', allocator_file, data_file, period)
+
+allocate(['M_MktV.csv', 'M_AdjTover_Pre.csv'], ['MV', 'AdjTover'], '2*3',
+         'MV_AdjTover_Pre_23.p', allocator_file, data_file, period)
