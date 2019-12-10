@@ -1,14 +1,14 @@
 import os
 from core.adv_utlis import *
 from core.portfolio import *
-from scipy.stats import ttest_1samp
+from scipy.stats import ttest_1samp, jarque_bera
 
 # file_name = 'MV_Sigma_Cur_55.p'
 
 
 def gen_latex(file_name_1, file_name_2, out_path=None):
-    panel_path_1 = os.path.join(config.panel_data_directory, file_name_1)
-    panel_path_2 = os.path.join(config.panel_data_directory, file_name_2)
+    panel_path_1 = os.path.join(config.panel_data_directory2, file_name_1)
+    panel_path_2 = os.path.join(config.panel_data_directory2, file_name_2)
     cur_panel_1 = PanelData.load_pickle(panel_path_1)
     cur_panel_2 = PanelData.load_pickle(panel_path_2)
     index = ['Small', '2', '3', '4', 'Big', 'All']
@@ -40,6 +40,7 @@ def gen_latex(file_name_1, file_name_2, out_path=None):
         out_panel.iloc[i, j] = cur_ret.mean() * 100
     if out_path is not None:
         out_panel.to_latex(out_path, float_format="{:0.2f}".format)
+    print(out_path)
     print(out_panel)
     return out_panel
 
@@ -48,5 +49,22 @@ dir = '/Users/oranbebai/PHD/Finance/Papers/ShortSellContrain/Tables'
 
 gen_latex('MV_Sigma_Cur_55.p', 'Sigma_Cur_5.p', os.path.join(dir, 'Sigma_Cur.tex'))
 gen_latex('MV_Sigma_Pre_55.p', 'Sigma_Pre_5.p', os.path.join(dir, 'Sigma_Pre.tex'))
+
+gen_latex('Non_Saleable_MV_Sigma_Cur_55.p', 'Non_Saleable_Sigma_Cur_5.p', os.path.join(dir, 'Non_Sigma_Cur.tex'))
+gen_latex('Non_Saleable_MV_Sigma_Pre_55.p', 'Non_Saleable_Sigma_Pre_5.p', os.path.join(dir, 'Non_Sigma_Pre.tex'))
+
+gen_latex('Saleable_MV_Sigma_Cur_55.p', 'Saleable_Sigma_Cur_5.p', os.path.join(dir, 'S_Sigma_Cur.tex'))
+gen_latex('Saleable_MV_Sigma_Pre_55.p', 'Saleable_Sigma_Pre_5.p', os.path.join(dir, 'S_Sigma_Pre.tex'))
+
+
+gen_latex('MV_AdjTover_Cur_55.p', 'AdjTover_Cur_5.p', os.path.join(dir, 'AdjTover_Cur.tex'))
+gen_latex('MV_AdjTover_Pre_55.p', 'AdjTover_Pre_5.p', os.path.join(dir, 'AdjTover_Pre.tex'))
+
+gen_latex('Non_Saleable_MV_AdjTover_Cur_55.p', 'Non_Saleable_AdjTover_Cur_5.p', os.path.join(dir, 'Non_AdjTover_Cur.tex'))
+gen_latex('Non_Saleable_MV_AdjTover_Pre_55.p', 'Non_Saleable_AdjTover_Pre_5.p', os.path.join(dir, 'Non_AdjTover_Pre.tex'))
+
+gen_latex('Saleable_MV_AdjTover_Cur_55.p', 'Saleable_AdjTover_Cur_5.p', os.path.join(dir, 'S_AdjTover_Cur.tex'))
+gen_latex('Saleable_MV_AdjTover_Pre_55.p', 'Saleable_AdjTover_Pre_5.p', os.path.join(dir, 'S_AdjTover_Pre.tex'))
+
 
 print(1)

@@ -47,9 +47,9 @@ def allocate(features_file, features, breakpoints, output_file, allocator_file, 
 
     print('Allocation start')
     # allocate all A stocks into 2 * 3 groups to calculate turnover factor
-    groups = all_stocks_feature.allocate_stocks_according_to_factors(features, split)
+    groups = all_stocks_feature.allocate_stocks_according_to_factors(features, split, sequentially=False)
     panel = generate_panel(all_stocks_data, period, groups)
-    output_file_path = os.path.join(config.panel_data_directory, output_file)
+    output_file_path = os.path.join(config.panel_data_directory2, output_file)
     panel.to_pickle(output_file_path)
 
     return panel
