@@ -17,6 +17,7 @@ factor_path = os.path.join(base_directory, 'Factors')
 output_directory = os.path.join(base_directory, 'Output')
 panel_data_directory = os.path.join(base_directory, 'Panel')
 panel_data_directory2 = os.path.join(base_directory, 'Panel2')
+panel_data_directory3 = os.path.join(base_directory, 'Panel3')
 temp_data_path = os.path.join(base_directory, 'Temp_data')
 
 calendar_path = os.path.join(raw_directory, r'TRD_Cale.txt')

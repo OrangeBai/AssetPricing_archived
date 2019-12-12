@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/statistic_description.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/all_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/all_stocks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/allocate_portfolios.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/allocate_portfolios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/portfolio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/regression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/generate_latex_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_latex_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reg.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/statistic_description.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/statistic_description.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +57,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.statistic_description">
+  <component name="RunManager" selected="Python.regression">
     <configuration name="CirculatedMarketValue" type="PythonConfigurationType" factoryName="Python">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -141,6 +142,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Liquidity" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/regression.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="statistic_description" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,42 +184,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Liquidity" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/utils.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.CirculatedMarketValue" />
       <item itemvalue="Python.allocate_portfolios" />
       <item itemvalue="Python.generate_latex_table" />
-      <item itemvalue="Python.utils" />
       <item itemvalue="Python.reg" />
       <item itemvalue="Python.statistic_description" />
+      <item itemvalue="Python.regression" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.regression" />
         <item itemvalue="Python.statistic_description" />
-        <item itemvalue="Python.generate_latex_table" />
-        <item itemvalue="Python.allocate_portfolios" />
         <item itemvalue="Python.reg" />
-        <item itemvalue="Python.utils" />
+        <item itemvalue="Python.allocate_portfolios" />
+        <item itemvalue="Python.generate_latex_table" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575922765160</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Default Changelist">
+      <created>1576004501180</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576004501180</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,28 +312,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/adv_utlis.py</url>
-          <line>54</line>
+          <line>59</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
-          <line>69</line>
+          <line>78</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
-          <line>44</line>
+          <line>52</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/reg.py</url>
-          <line>18</line>
+          <line>31</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/statistic_description.py</url>
-          <line>47</line>
-          <option name="timeStamp" value="58" />
+          <line>122</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/regression.py</url>
+          <line>71</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

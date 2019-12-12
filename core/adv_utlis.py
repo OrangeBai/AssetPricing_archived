@@ -3,7 +3,7 @@ from core.rolling_windows import *
 from core.utils import *
 
 
-def allocate(features_file, features, breakpoints, output_file, allocator_file, data_file, period):
+def allocate(features_file, features, breakpoints, output_file, allocator_file, data_file, period, reverse=True):
     """
     allocate stocks.
     :param features_file: file name of features.
@@ -32,6 +32,11 @@ def allocate(features_file, features, breakpoints, output_file, allocator_file, 
 
     print("feature: {0}\nbreakpoint:{1}\nfile_path:{2}\n".format(features, split, features_file))
 
+    if reverse:
+        features_file.reverse()
+        features.reverse()
+        split.reverse()
+
     # Load daily return and market value of all stocks
     all_stocks_data_path = os.path.join(config.temp_data_path, data_file)
     all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
@@ -49,7 +54,7 @@ def allocate(features_file, features, breakpoints, output_file, allocator_file, 
     # allocate all A stocks into 2 * 3 groups to calculate turnover factor
     groups = all_stocks_feature.allocate_stocks_according_to_factors(features, split, sequentially=False)
     panel = generate_panel(all_stocks_data, period, groups)
-    output_file_path = os.path.join(config.panel_data_directory2, output_file)
+    output_file_path = os.path.join(config.panel_data_directory3, output_file)
     panel.to_pickle(output_file_path)
 
     return panel
@@ -149,4 +154,3 @@ def gen_panel(panel_name, allocator, feature, all_stocks_data, period):
         panel = generate_panel(all_stocks_data, period, groups)
         panel.to_pickle(pickle_path)
     return panel
-
