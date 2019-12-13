@@ -76,4 +76,9 @@ gen_latex('Saleable_MV_AdjTover_Cur_55.p', 'Saleable_AdjTover_Cur_5.p', os.path.
 gen_latex('Saleable_MV_AdjTover_Pre_55.p', 'Saleable_AdjTover_Pre_5.p', os.path.join(dir2, 'S_AdjTover_Pre.tex'))
 
 
+# def gen_latex(panels, splits):
+#     assert len(panels) == len(splits)
+#     for panel in panels:
+
+
 print(1)

@@ -13,3 +13,5 @@ factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
 factors = get_factors(factor_path, period, mode='m')
 
 print(1)
+
+

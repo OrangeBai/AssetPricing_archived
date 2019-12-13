@@ -3,7 +3,7 @@ from core.rolling_windows import *
 from core.utils import *
 
 
-def allocate(features_file, features, breakpoints, output_file, allocator_file, data_file, period, reverse=True):
+def allocate(features_file, features, breakpoints, output_file, allocator_file, data_file, period):
     """
     allocate stocks.
     :param features_file: file name of features.
@@ -31,11 +31,6 @@ def allocate(features_file, features, breakpoints, output_file, allocator_file, 
         raise AssertionError('Length of features, features path and split should be equal')
 
     print("feature: {0}\nbreakpoint:{1}\nfile_path:{2}\n".format(features, split, features_file))
-
-    if reverse:
-        features_file.reverse()
-        features.reverse()
-        split.reverse()
 
     # Load daily return and market value of all stocks
     all_stocks_data_path = os.path.join(config.temp_data_path, data_file)
