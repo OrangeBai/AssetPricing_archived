@@ -48,22 +48,11 @@ def allocate(features_file, features, breakpoints, output_file, allocator_file, 
     print('Allocation start')
     # allocate all A stocks into 2 * 3 groups to calculate turnover factor
     groups = all_stocks_feature.allocate_stocks_according_to_factors(features, split, sequentially=False)
-    panel = generate_panel(all_stocks_data, period, groups)
+    panel = PanelData(period, all_stocks_data, groups)
     output_file_path = os.path.join(config.panel_data_directory3, output_file)
     panel.to_pickle(output_file_path)
 
     return panel
-
-
-def generate_panel(all_stocks, period, groups, weight='value'):
-    cur_panel = PanelData(period)
-    for name, period_to_tickers in groups.items():
-        current_portfolio_list = []
-        for period, tickers in period_to_tickers.items():
-            current_portfolio_list.append(all_stocks.retrieve(tickers, period))
-        cur_panel.add_portfolio(name, current_portfolio_list, weight=weight)
-    cur_panel.set_group(groups)
-    return cur_panel
 
 
 def get_rf_rate(period, sep='\t', encoding='gbk', mode='d', path=None):
@@ -121,31 +110,4 @@ def period_ret(input_df):
     return overall_ret
 
 
-def update_allocator(pickle_path, *args, replace=True):
-    """
-    Update factors in allocator file.
-    :param pickle_path: Pickle path of the original allocator file
-    :param args: tuple as (factor_name, factor_path)
-    :return: None
-    """
-    allocator = Allocate.load_pickle(pickle_path)
-    for arg in args:
-        factor_name = arg[0]
-        factor_path = arg[1]
-        try:
-            allocator.add_factor(factor_name, factor_path, replace=True)
-        except FileExistsError as e:
-            print(e)
-    allocator.to_pickle(pickle_path)
-    return allocator
 
-
-def gen_panel(panel_name, allocator, feature, all_stocks_data, period):
-    pickle_path = os.path.join(config.temp_data_path, panel_name + '.p')
-    if os.path.exists(pickle_path):
-        panel = Portfolio.load_pickle(pickle_path)
-    else:
-        groups = allocator.allocate_stocks_according_to_factors(feature[0], feature[1])
-        panel = generate_panel(all_stocks_data, period, groups)
-        panel.to_pickle(pickle_path)
-    return panel

@@ -29,8 +29,8 @@ for name, period in names:
     cur_df.iloc[0, 1] = mx
 
     group[name] = a.periods_to_tickers
-    p1 = generate_panel(data, period, group, weight='value')
-    p2 = generate_panel(data, period, group, weight='equal')
+    p1 = PanelData(period, data, group)
+    p2 = PanelData(period, data, group)
     rets_1.append(p1.ret)
     rets_2.append(p2.ret)
 

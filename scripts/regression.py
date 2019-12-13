@@ -10,27 +10,27 @@ from core.adv_utlis import *
 from core.utils import *
 
 # Load the panel data of dependent portfolios
-
-
-period = ('1997-01', '2019-07')
-month_split = get_split(period)[0]
-month_tag = get_split(period)[3]
-
-all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
-all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
-
-allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
-allocator_M = Allocate.load_pickle(allocator_M_path)
-
-mv_path = os.path.join(config.feature_directory, 'M_MktV.csv')
-adjTover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
-allocator_M.add_factor('mv', mv_path)
-allocator_M.add_factor('adjTover', adjTover_path)
-
-MV_adjTover_55_panel = gen_panel('adjTover_MV_55_panel_all', allocator_M,
-                                 (['mv', 'adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)]),
-                                 all_stocks_data, period)
-print(1)
+#
+#
+# period = ('1997-01', '2019-07')
+# month_split = get_split(period)[0]
+# month_tag = get_split(period)[3]
+#
+# all_stocks_data_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
+# all_stocks_data = Portfolio.load_pickle(all_stocks_data_path)
+#
+# allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
+# allocator_M = Allocate.load_pickle(allocator_M_path)
+#
+# mv_path = os.path.join(config.feature_directory, 'M_MktV.csv')
+# adjTover_path = os.path.join(config.feature_directory, 'M_AdjTover.csv')
+# allocator_M.add_factor('mv', mv_path)
+# allocator_M.add_factor('adjTover', adjTover_path)
+#
+# MV_adjTover_55_panel = gen_panel('adjTover_MV_55_panel_all', allocator_M,
+#                                  (['mv', 'adjTover'], [(0, 0.2, 0.4, 0.6, 0.8, 1), (0, 0.2, 0.4, 0.6, 0.8, 1)]),
+#                                  all_stocks_data, period)
+# print(1)
 # panel = PanelData.load_pickle(r'/Users/oranbebai/Code/Finance/Liquidity/temp_data/mv_turnover.p')
 # rets = panel.ret
 #

@@ -17,7 +17,7 @@ all_stocks_feature.add_factor('turn', '/Users/oranbebai/Documents/Data/Finance/F
 # allocate all A stocks into 2 * 3 groups to calculate turnover factor
 groups = all_stocks_feature.allocate_stocks_according_to_factors(['mv', 'adj_turnover'],
                                                                  [(0, 0.5, 1), (0, 0.3, 0.7, 1)])
-cur_panel = generate_panel(all_stocks_data, config.period, groups)
+cur_panel = PanelData(config.period, all_stocks_data, groups)
 ret = cur_panel.ret
 turnover_factor = (ret.iloc[:, 0] - ret.iloc[:, 2] + ret.iloc[:, 3] - ret.iloc[:, 5]) / 2
 cur_panel.to_pickle('mv_turnover_2_3')
@@ -26,6 +26,6 @@ cur_panel.to_pickle('mv_turnover_2_3')
 groups = all_stocks_feature.allocate_stocks_according_to_factors(['mv', 'adj_turnover'],
                                                                  [(0, 0.2, 0.4, 0.6, 0.8, 1),
                                                                   (0, 0.2, 0.4, 0.6, 0.8, 1)])
-cur_panel = generate_panel(all_stocks_data, config.period, groups)
+cur_panel = PanelData(config.period, all_stocks_data, groups)
 cur_panel.to_pickle('mv_adj_turnover_5_5')
 

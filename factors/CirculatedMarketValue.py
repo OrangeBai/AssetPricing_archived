@@ -11,7 +11,7 @@ mv = pd.read_csv(mv_path, index_col=0)
 month_tags = config.month_tag_all
 mv_monthly = {month_tags[0]: np.NaN}
 for i in range(len(month_tags) - 1):
-    # Since the mv data is often used for allocate stocks and predict, MV of month N is record with tag N+1 for further use
+    # Since the mv data is often used for allocate stocks and predict, MV of month N is record with tag N+1
     mv_monthly[month_tags[i + 1]] = mv[month_tags[i]: month_tags[i + 1]].mean()
 
 mv_monthly = pd.DataFrame(mv_monthly).T
@@ -22,7 +22,7 @@ mv_monthly.to_csv(mv_monthly_path)
 year_tags = config.year_tag_all
 mv_year = {year_tags[0]: np.NaN}
 for i in range(len(year_tags)-1):
-    # Since the mv data is often used for allocate stocks and predict, MV of month N is record with tag N+1 for further use
+    # Since the mv data is often used for allocate stocks and predict, MV of month N is record with tag N+1
     year_select = mv.loc[year_tags[i]: year_tags[i+1]]
     mv_year[year_tags[i+1]] = year_select.mean()
 

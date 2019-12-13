@@ -110,25 +110,39 @@ class Portfolio(PortfolioBase):
 
 
 class PanelData(PortfolioBase):
-    def __init__(self, period, des=''):
+    def __init__(self, period, all_stocks, groups, des=''):
         super().__init__(period, des)
-        self.ret = pd.DataFrame(index=self.trade_dates)
+        self.ret_ew = pd.DataFrame(index=self.trade_dates)
+        self.ret_vw = pd.DataFrame(index=self.trade_dates)
         self.group = None
-        self.weight = None
+        self.generate_panel(all_stocks, groups)
 
-    def add_portfolio(self, name, list_of_portfolio, weight='value'):
-        portfolio_return = pd.Series()
+    def add_portfolio(self, name, list_of_portfolio):
+        portfolio_return_ew = pd.Series()
+        portfolio_return_vw = pd.Series()
         trade_dates = []
         for portfolio in list_of_portfolio:
             assert [date for date in trade_dates if date in portfolio.trade_dates] == []
             trade_dates.extend(portfolio.trade_dates)
         assert set(self.trade_dates).issubset(trade_dates)
         for portfolio in list_of_portfolio:
-            portfolio_return = portfolio_return.append(portfolio.cal_return(weight))
-        portfolio_return = portfolio_return[self.trade_dates]
-        self.ret[name] = portfolio_return
-        self.weight = weight
+            portfolio_return_ew = portfolio_return_ew.append(portfolio.cal_return('equal'))
+            portfolio_return_vw = portfolio_return_vw.append(portfolio.cal_return('value'))
+        portfolio_return_ew = portfolio_return_ew[self.trade_dates]
+        portfolio_return_vw = portfolio_return_vw[self.trade_dates]
+        self.ret_ew[name] = portfolio_return_ew
+        self.ret_vw[name] = portfolio_return_vw
         return
+
+    def generate_panel(self, all_stocks, groups):
+        for name, period_to_tickers in groups.items():
+            current_portfolio_list = []
+            for period, tickers in period_to_tickers.items():
+                current_portfolio_list.append(all_stocks.retrieve(tickers, period))
+            self.add_portfolio(name, current_portfolio_list)
+        self.set_group(groups)
+        return
+
 
     def set_group(self, group):
         self.group = group
