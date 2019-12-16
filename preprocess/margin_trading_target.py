@@ -27,6 +27,7 @@ for num, row in rz_file.iterrows():
             continue
         Margin_Buy[ticker][month_split[0]] = 1.0
 
+
 for num, row in rq_file.iterrows():
     ticker = row['secID'].split('.')[0]
     Sell_Out[ticker] = {}

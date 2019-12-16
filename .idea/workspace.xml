@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+    <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/portfolio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/factors/CirculatedMarketValue.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/CirculatedMarketValue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/factors/turnover.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/turnover.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/factors/Sigma.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/Sigma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess/MarginTrading.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/MarginTrading.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess/margin_trading_target.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/margin_trading_target.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/generate_latex_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_latex_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/regression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/margin_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/margin_stocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reg.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/statistic_description.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/statistic_description.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/turnover_factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/turnover_factor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/turnover_factor.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Liquidity" />
@@ -33,9 +47,15 @@
   </component>
   <component name="ProjectId" id="1Qe8wPizr0PDhBUwpWMm5fabw14" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="set_index&#9;null&#9;null" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="D:/Software/Working/Anaconda3/envs/stats/libs" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -47,7 +67,7 @@
       <recent name="$PROJECT_DIR$/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.generate_latex_table">
+  <component name="RunManager" selected="Python.statistic_description">
     <configuration name="CirculatedMarketValue" type="PythonConfigurationType" factoryName="Python">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -70,6 +90,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="adv_utlis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Liquidity" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/adv_utlis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="allocate_portfolios" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,7 +126,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/allocate_portfolios.py" />
-      <option name="PARAMETERS" value="--features MV Sigma --breakpoint 5*5 --feature-file-name M_MktV.csv M_Sigma_Cur.csv --out-put-name MV_Sigma_55" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -114,7 +156,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="reg" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="margin_stocks" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -127,29 +169,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/reg.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Liquidity" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/regression.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/margin_stocks.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -183,18 +203,18 @@
     <list>
       <item itemvalue="Python.CirculatedMarketValue" />
       <item itemvalue="Python.allocate_portfolios" />
+      <item itemvalue="Python.margin_stocks" />
       <item itemvalue="Python.generate_latex_table" />
-      <item itemvalue="Python.reg" />
       <item itemvalue="Python.statistic_description" />
-      <item itemvalue="Python.regression" />
+      <item itemvalue="Python.adv_utlis" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.generate_latex_table" />
         <item itemvalue="Python.statistic_description" />
-        <item itemvalue="Python.regression" />
-        <item itemvalue="Python.reg" />
+        <item itemvalue="Python.generate_latex_table" />
         <item itemvalue="Python.allocate_portfolios" />
+        <item itemvalue="Python.adv_utlis" />
+        <item itemvalue="Python.margin_stocks" />
       </list>
     </recent_temporary>
   </component>
@@ -220,6 +240,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568119939263</updated>
+      <workItem from="1576380952570" duration="15497000" />
     </task>
     <task id="LOCAL-00001" summary="Some Changes">
       <created>1571841490559</created>
@@ -291,8 +312,18 @@
       <option name="project" value="LOCAL" />
       <updated>1576161264196</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Default Changelist">
+      <created>1576269146234</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576269146234</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -317,10 +348,54 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#Inspections/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576269034477" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1576268640816">
+    <state x="58" y="278" width="906" height="596" key="#xdebugger.evaluate" timestamp="1576465664869">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576268640816" />
+    <state x="58" y="278" width="906" height="596" key="#xdebugger.evaluate/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576465664869" />
+    <state x="560" y="118" key="CommitChangelistDialog2" timestamp="1576269144689">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="560" y="118" key="CommitChangelistDialog2/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576269144689" />
+    <state width="1858" height="221" key="GridCell.Tab.0.bottom" timestamp="1576485684073">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684073" />
+    <state width="1858" height="221" key="GridCell.Tab.0.center" timestamp="1576485684072">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684072" />
+    <state width="1858" height="221" key="GridCell.Tab.0.left" timestamp="1576485684071">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684071" />
+    <state width="1858" height="221" key="GridCell.Tab.0.right" timestamp="1576485684072">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684072" />
+    <state width="1858" height="221" key="GridCell.Tab.1.bottom" timestamp="1576485684073">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.1.bottom/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684073" />
+    <state width="1858" height="221" key="GridCell.Tab.1.center" timestamp="1576485684073">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.1.center/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684073" />
+    <state width="1858" height="221" key="GridCell.Tab.1.left" timestamp="1576485684073">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.1.left/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684073" />
+    <state width="1858" height="221" key="GridCell.Tab.1.right" timestamp="1576485684073">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1858" height="221" key="GridCell.Tab.1.right/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576485684073" />
+    <state x="640" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1576434610763">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="640" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576434610763" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1576301916996">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1536.834@0.0.1920.1050" timestamp="1576301916996" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -332,18 +407,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
-          <line>76</line>
+          <line>80</line>
           <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/reg.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/regression.py</url>
@@ -352,15 +417,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/generate_latex_table.py</url>
-          <line>54</line>
+          <line>58</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/factors/Sigma.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/adv_utlis.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/portfolio.py</url>
+          <line>52</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/statistic_description.py</url>
-          <line>61</line>
-          <option name="timeStamp" value="71" />
+          <line>96</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/statistic_description.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AssetPricing$statistic_description.coverage" NAME="statistic_description Coverage Results" MODIFIED="1576465553407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/AssetPricing$margin_trading_target.coverage" NAME="margin_trading_target Coverage Results" MODIFIED="1576302067306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preprocess" />
+    <SUITE FILE_PATH="coverage/AssetPricing$adv_utlis.coverage" NAME="adv_utlis Coverage Results" MODIFIED="1576452463568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/AssetPricing$margin_stocks.coverage" NAME="margin_stocks Coverage Results" MODIFIED="1576446584733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/AssetPricing$Sigma.coverage" NAME="Sigma Coverage Results" MODIFIED="1576269897630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/factors" />
+    <SUITE FILE_PATH="coverage/AssetPricing$all_stocks.coverage" NAME="all_stocks Coverage Results" MODIFIED="1576273339960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/AssetPricing$generate_latex_table.coverage" NAME="generate_latex_table Coverage Results" MODIFIED="1576459766804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/AssetPricing$turnover.coverage" NAME="turnover Coverage Results" MODIFIED="1576271312338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/factors" />
+    <SUITE FILE_PATH="coverage/AssetPricing$CirculatedMarketValue.coverage" NAME="CirculatedMarketValue Coverage Results" MODIFIED="1576269163833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/factors" />
+    <SUITE FILE_PATH="coverage/AssetPricing$MarginTrading.coverage" NAME="MarginTrading Coverage Results" MODIFIED="1576437881574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preprocess" />
+    <SUITE FILE_PATH="coverage/AssetPricing$allocate_portfolios.coverage" NAME="allocate_portfolios Coverage Results" MODIFIED="1576452466982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>

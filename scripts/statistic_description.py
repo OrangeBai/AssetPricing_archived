@@ -1,8 +1,8 @@
 from core.adv_utlis import *
 from scipy.stats import jarque_bera, skew, kurtosis, norm
 import config
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 
 names = [('Allocator_M.p', ('1997-01', '2010-04')),
          ('non_saleable_allocator.p', ('2010-04', '2019-07')),
@@ -30,12 +30,11 @@ for name, period in names:
 
     group[name] = a.periods_to_tickers
     p1 = PanelData(period, data, group)
-    p2 = PanelData(period, data, group)
-    rets_1.append(p1.ret)
-    rets_2.append(p2.ret)
+    rets_1.append(p1.ret_ew)
+    rets_2.append(p1.ret_vw)
 
-    p1_ret = period_ret_all(p1.ret, config.month_split, period)
-    p2_ret = period_ret_all(p2.ret, config.month_split, period)
+    p1_ret = period_ret_all(p1.ret_ew, config.month_split, period)
+    p2_ret = period_ret_all(p1.ret_vw, config.month_split, period)
 
     retss_1.append(p1_ret)
     retss_2.append(p2_ret)
@@ -61,47 +60,22 @@ for name, period in names:
 ret = pd.concat(pds, axis=0)
 print(1)
 
-# a = retss_1[0]
-# temp0 = (a - a.mean())/a.std()
-# a = retss_1[1]
-# temp1 = (a - a.mean())/a.std()
-# a = retss_1[2]
-# temp2 = (a - a.mean())/a.std()
-#
-# sns.distplot(temp0, color='b', fit=norm, label='Period 1', hist=False)
-# sns.distplot(temp1, color='g', label='Period 2', hist=False)
-# sns.distplot(temp2, color='y', label='Period 3', hist=False)
-#
-# files = ['M_Sigma_Cur.csv', 'M_Sigma_Pre.csv', 'M_AdjTover_Cur.csv', 'M_AdjTover_Cur.csv', 'M_MktV.csv']
-# sts = []
-# for name, period in names:
-#     a = Allocate.load_pickle(os.path.join(config.temp_data_path, name))
-#     periods_to_tickers = a.periods_to_tickers
-#     st = []
-#     for file in files:
-#         feature = pd.read_csv(os.path.join(config.feature_directory, file), index_col=0)
-#         cur_st = []
-#         for month, tickers in periods_to_tickers.items():
-#             cur_st.append(feature.loc[month[0], tickers].mean())
-#         st.append(np.array(cur_st).mean())
-#     sts.append(st)
-# print(1)
 
 files = ['M_Sigma_Cur.csv', 'M_Sigma_Pre.csv', 'M_AdjTover_Cur.csv', 'M_AdjTover_Cur.csv', 'M_MktV.csv']
 sts = []
 files2 = ['MV_Sigma_Cur_55.p', 'Non_Saleable_MV_Sigma_Cur_55.p', 'Saleable_MV_Sigma_Cur_55.p', 'Saleable_Sigma_Cur_5.p']
-# for name, period in names:
-#     a = Allocate.load_pickle(os.path.join(config.temp_data_path, name))
-#     periods_to_tickers = a.periods_to_tickers
-#     st = []
-#     for file in files:
-#         feature = pd.read_csv(os.path.join(config.feature_directory, file), index_col=0)
-#         cur_st = []
-#         for month, tickers in periods_to_tickers.items():
-#             cur_st.append(feature.loc[month[0], tickers].mean())
-#         st.append(np.array(cur_st).mean())
-#     sts.append(st)
-# print(1)
+for name, period in names:
+    a = Allocate.load_pickle(os.path.join(config.temp_data_path, name))
+    periods_to_tickers = a.periods_to_tickers
+    st = []
+    for file in files:
+        feature = pd.read_csv(os.path.join(config.feature_directory, file), index_col=0)
+        cur_st = []
+        for month, tickers in periods_to_tickers.items():
+            cur_st.append(feature.loc[month[0], tickers].mean())
+        st.append(np.array(cur_st).mean())
+    sts.append(st)
+print(1)
 #
 # mv = pd.read_csv(os.path.join(config.feature_directory, 'M_MktV.csv'), index_col=0)
 # st = {}

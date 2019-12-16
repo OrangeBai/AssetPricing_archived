@@ -3,12 +3,13 @@ import pandas as pd
 import config
 from preprocess.CSMAR import *
 from core.utils import *
+import os
 
 # This script is used for extract daily margin trading information.
 # Output is listed in CSV directory and extracted features are listed in Extracted Directory
 
 # Raw data directory, data is downloaded from QuantOS
-pre_directory = '/Users/oranbebai/Documents/Data/Finance/pre'
+pre_directory = os.path.join(config.base_directory, 'pre')
 files = os.listdir(pre_directory)
 data = pd.DataFrame()
 # Aggregate all data in a data frame

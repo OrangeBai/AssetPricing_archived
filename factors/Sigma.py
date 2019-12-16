@@ -12,7 +12,7 @@ trade_dates = rets.index.to_list()
 
 # Load factor file of market, SMB, HML
 factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
-factors_day = get_factors(factor_path, config.all_period)
+factors_day = get_factors(config.all_period)
 factors = factors_day.iloc[:, [0, 2, 4]]
 
 # Load rf data
