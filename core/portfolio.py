@@ -116,6 +116,7 @@ class PanelData(PortfolioBase):
         self.ret_vw = pd.DataFrame(index=self.trade_dates)
         self.group = None
         self.generate_panel(all_stocks, groups)
+        self.set_weight()
 
     def add_portfolio(self, name, list_of_portfolio):
         portfolio_return_ew = pd.Series()
@@ -143,7 +144,11 @@ class PanelData(PortfolioBase):
         self.set_group(groups)
         return
 
-
     def set_group(self, group):
         self.group = group
 
+    def set_weight(self, weight='vw'):
+        if weight == 'vw':
+            self.ret = self.ret_vw
+        else:
+            self.ret = self.ret_ew

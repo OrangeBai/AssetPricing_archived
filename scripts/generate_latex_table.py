@@ -78,4 +78,39 @@ gen_latex('Saleable_MV_AdjTover_Pre_55.p', 'Saleable_AdjTover_Pre_5.p', os.path.
 #     for panel in panels:
 
 
+def gen_latex_table_result(res, data_list, dir, out_file):
+    """
+    @param res: regression results. [beta, t-test, p-value, R]
+    @param data_list: which data are required
+    @param dir: output_directory name
+    @param out_file: out put file name
+    @return: None
+    """
+    out_dir = config.table_directory + str(dir)
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+    group_num = 25
+    assert group_num == len(res[3])
+    df = pd.DataFrame()
+    for idx in data_list:
+        cur_df = pd.DataFrame(np.zeros((16, 6)))
+        for num in range(group_num):
+            i = num // 5
+            j = num % 5
+            cur_df.iloc[1 + 2 * i, 1 + j] = res[0].iloc[idx, data] * 100
+            cur_df.iloc[2 + 2 * i, 1 + j] = res[1].iloc[idx, data]
+            cur_df.iloc[11 + i, 1 + j] = res[2].iloc[idx, data]
+            cur_df.iloc[16 + i, 1 + j] = res[3].iloc[idx, data]
+        pd.concat([df, cur_df], axis=0)
+    out_path = os.path.join(out_dir, out_file)
+    pd.to_latex(out_path, float_format="{:0.2f}".format)
+    return
+
+
+
+
+
+
+
+
 print(1)

@@ -19,6 +19,7 @@ panel_data_directory = os.path.join(base_directory, 'Panel')
 panel_data_directory2 = os.path.join(base_directory, 'Panel2')
 panel_data_directory3 = os.path.join(base_directory, 'Panel3')
 temp_data_path = os.path.join(base_directory, 'Temp_data')
+table_directory = os.path.join(base_directory, 'Table')
 
 calendar_path = os.path.join(raw_directory, r'TRD_Cale.txt')
 trade_dates = get_trade_dates(calendar_path, period)

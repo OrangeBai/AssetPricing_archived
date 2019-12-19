@@ -1,6 +1,7 @@
 from core.adv_utlis import *
 
 
+
 def reg(y, x):
     """
     Regression of panel data on the given factors.
@@ -43,11 +44,13 @@ def regress(period, y_panel_name, factor_panels=None, factor_names=None):
 
     y_panel_path = os.path.join(config.panel_data_directory, y_panel_name)
     y_panel = PanelData.load_pickle(y_panel_path)
+    y_panel.set_weight('ew')
 
     if factor_panels is not None:
         for panel_name in factor_panels:
             panel_path = os.path.join(config.panel_data_directory, panel_name)
             panel = PanelData.load_pickle(panel_path)
+            panel.set_weight('ew')
             ret = panel.ret
             selected_factors[panel_name.split(',')[0]] = (ret.iloc[:, 0] + ret.iloc[:, 3] -
                                                           ret.iloc[:, 2] - ret.iloc[:, 5]) / 2
@@ -64,9 +67,12 @@ def regress(period, y_panel_name, factor_panels=None, factor_names=None):
 
 
 if __name__ == '__main__':
-    a = regress(('1997-01', '2010-04'), 'MV_AdjTover_Pre_55.p', factor_panels=['MV_Sigma_Pre_23.p'])
+    a = regress(('1997-01', '2010-04'), 'MV_AdjTover_Pre_55.p', factor_panels=['MV_AdjTover_Pre_23.p'])
+    gen_latex_table_result(a, (0, 4), '3', 'a.tex')
     b = regress(('2010-04', '2019-07'), 'Saleable_MV_AdjTover_Pre_55.p',
-                factor_panels=['MV_Sigma_Pre_23.p'])
+                factor_panels=['MV_AdjTover_Pre_23.p'])
+    gen_latex_table_result(b, (0, 4), '3', 'b.tex')
     c = regress(('2010-04', '2019-07'), 'Non_Saleable_MV_AdjTover_Pre_55.p',
-                factor_panels=['MV_Sigma_Pre_23.p'])
+                factor_panels=['MV_AdjTover_Pre_23.p'])
+    gen_latex_table_result(c, (0, 4), '3', 'c.tex')
     print(1)
