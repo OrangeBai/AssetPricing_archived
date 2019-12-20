@@ -110,7 +110,7 @@ def period_ret(input_df):
     return overall_ret
 
 
-def gen_latex_table_result(res, data_list, out_dir_name, out_file):
+def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
     """
     @param res: regression results. [beta, t-test, p-value, R]
     @param data_list: which data are required
@@ -118,23 +118,32 @@ def gen_latex_table_result(res, data_list, out_dir_name, out_file):
     @param out_file: out put file name
     @return: None
     """
+    res1 = ress[0]
+    res2 = ress[1]
     out_dir = config.table_directory + str(out_dir_name)
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
     group_num = 25
-    assert group_num == len(res[3])
-    df = pd.DataFrame(np.zeros((10 * (len(data_list)), 10)))
+    assert group_num == len(res1[3])
+    df = pd.DataFrame(np.zeros((6 * (len(data_list)), 10)))
     for idx in data_list:
         idx_loc = data_list.index(idx)
         for num in range(group_num):
             i = num // 5
             j = num % 5
             if idx == 0:
-                df.iloc[i, j] = res[0].iloc[num, idx] * 100
+                df.iloc[i, j] = res1[0].iloc[num, idx] * 100
             else:
-                df.iloc[10 * idx_loc + i, j] = res[0].iloc[num, idx]
-            df.iloc[10 * idx_loc + i, 5 + j] = res[1].iloc[num, idx]
-            df.iloc[5 + idx_loc * 10 + i, j] = res[2].iloc[num, idx]
+                df.iloc[6 * idx_loc + i, j] = res1[0].iloc[num, idx]
+
+            if res1[2].iloc[num, idx] < 0.01:
+                df.iloc[6 * idx_loc + i, 5 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{***}$'
+            elif 0.05 > res1[2].iloc[num, idx] >= 0.01:
+                df.iloc[6 * idx_loc + i, 5 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{**}$'
+            elif 0.1 > res1[2].iloc[num, idx] >= 0.05:
+                df.iloc[6 * idx_loc + i, 5 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{*}$'
+            else:
+                df.iloc[6 * idx_loc + i, 5 + j] = res1[1].iloc[num, idx]
             # df.iloc[2 * i, 5 + 5 * idx_loc + j] = res[3].iloc[num]
     out_path = os.path.join(out_dir, out_file)
 
