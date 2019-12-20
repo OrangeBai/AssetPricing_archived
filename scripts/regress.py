@@ -51,4 +51,6 @@ gen_latex_table_result([res_1, res_2], (0, 4), '3', 'Saleable_MV_Sigma_Cur_55.te
 res_1 = regress(('2010-04', '2019-07'), 'Non_Saleable_MV_Sigma_Cur_55.p', factor_panels=['MV_Sigma_Cur_23.p'])
 res_2 = regress(('2010-04', '2019-07'), 'Non_Saleable_Sigma_Cur_5.p', factor_panels=['MV_Sigma_Cur_23.p'])
 gen_latex_table_result([res_1, res_2], (0, 4), '3', 'Non_Saleable_MV_Sigma_Cur_55.tex')
+
+
 print(1)
