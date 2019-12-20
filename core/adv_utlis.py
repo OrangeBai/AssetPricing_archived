@@ -123,12 +123,18 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
     out_dir = config.table_directory + str(out_dir_name)
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
-    group_num = 25
-    assert group_num == len(res1[3])
-    df = pd.DataFrame(np.zeros((6 * (len(data_list)), 10)))
+    group_num_1 = 25
+    group_num_2 = 5
+    assert group_num_1 == len(res1[3])
+    assert group_num_2 == len(res2[3])
+    idx = ['Small', '2', '3', '4', 'Big', 'All']
+    idx = idx * len(data_list)
+
+    df = pd.DataFrame(index=idx, data=np.zeros((6 * (len(data_list)), 11)))
+    df.iloc[:, 5] = np.NaN
     for idx in data_list:
         idx_loc = data_list.index(idx)
-        for num in range(group_num):
+        for num in range(group_num_1):
             i = num // 5
             j = num % 5
             if idx == 0:
@@ -137,16 +143,40 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
                 df.iloc[6 * idx_loc + i, j] = res1[0].iloc[num, idx]
 
             if res1[2].iloc[num, idx] < 0.01:
-                df.iloc[6 * idx_loc + i, 5 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{***}$'
+                df.iloc[6 * idx_loc + i, 6 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{***}$'
             elif 0.05 > res1[2].iloc[num, idx] >= 0.01:
-                df.iloc[6 * idx_loc + i, 5 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{**}$'
+                df.iloc[6 * idx_loc + i, 6 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{**}$'
             elif 0.1 > res1[2].iloc[num, idx] >= 0.05:
-                df.iloc[6 * idx_loc + i, 5 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{*}$'
+                df.iloc[6 * idx_loc + i, 6 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{*}$'
             else:
-                df.iloc[6 * idx_loc + i, 5 + j] = res1[1].iloc[num, idx]
+                df.iloc[6 * idx_loc + i, 6 + j] = res1[1].iloc[num, idx]
             # df.iloc[2 * i, 5 + 5 * idx_loc + j] = res[3].iloc[num]
+
+        for num in range(group_num_2):
+            j = num % 5
+            if idx == 0:
+                df.iloc[5, j] = res2[0].iloc[num, idx] * 100
+            else:
+                df.iloc[6 * idx_loc + 5, j] = res2[0].iloc[num, idx]
+
+            if res2[2].iloc[num, idx] < 0.01:
+                df.iloc[6 * idx_loc + 5, 6 + j] = '$ {0:.2f}'.format(res2[1].iloc[num, idx]) + '^{***}$'
+            elif 0.05 > res2[2].iloc[num, idx] >= 0.01:
+                df.iloc[6 * idx_loc + 5, 6 + j] = '$ {0:.2f}'.format(res2[1].iloc[num, idx]) + '^{**}$'
+            elif 0.1 > res2[2].iloc[num, idx] >= 0.05:
+                df.iloc[6 * idx_loc + 5, 6 + j] = '$ {0:.2f}'.format(res2[1].iloc[num, idx]) + '^{*}$'
+            else:
+                df.iloc[6 * idx_loc + 5, 6 + j] = res2[1].iloc[num, idx]
+
     out_path = os.path.join(out_dir, out_file)
 
-    df.to_latex(out_path, float_format="{:0.2f}".format)
+    latex_str = df.to_latex(None, float_format="{:0.2f}".format, na_rep='')
 
+    latex_str = latex_str.replace(r'\$', '$')
+    latex_str = latex_str.replace(r'\{', '{')
+    latex_str = latex_str.replace(r'\}', '}')
+    latex_str = latex_str.replace(r'\textasciicircum', '^')
+    latex_str = latex_str.replace(r'nan', '')
+    with open(out_path, 'w') as file:
+        file.write(latex_str)
     return
