@@ -143,11 +143,11 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
                 df.iloc[6 * idx_loc + i, j] = res1[0].iloc[num, idx]
 
             if res1[2].iloc[num, idx] < 0.01:
-                df.iloc[6 * idx_loc + i, 6 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{***}$'
+                df.iloc[6 * idx_loc + i, 6 + j] = '{0:.2f}'.format(res1[1].iloc[num, idx]) + '\si{^{***}}'
             elif 0.05 > res1[2].iloc[num, idx] >= 0.01:
-                df.iloc[6 * idx_loc + i, 6 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{**}$'
+                df.iloc[6 * idx_loc + i, 6 + j] = '{0:.2f}'.format(res1[1].iloc[num, idx]) + '\si{^{**}}'
             elif 0.1 > res1[2].iloc[num, idx] >= 0.05:
-                df.iloc[6 * idx_loc + i, 6 + j] = '$ {0:.2f}'.format(res1[1].iloc[num, idx]) + '^{*}$'
+                df.iloc[6 * idx_loc + i, 6 + j] = '{0:.2f}'.format(res1[1].iloc[num, idx]) + '\si{^{*}}'
             else:
                 df.iloc[6 * idx_loc + i, 6 + j] = res1[1].iloc[num, idx]
             # df.iloc[2 * i, 5 + 5 * idx_loc + j] = res[3].iloc[num]
@@ -160,11 +160,11 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
                 df.iloc[6 * idx_loc + 5, j] = res2[0].iloc[num, idx]
 
             if res2[2].iloc[num, idx] < 0.01:
-                df.iloc[6 * idx_loc + 5, 6 + j] = '$ {0:.2f}'.format(res2[1].iloc[num, idx]) + '^{***}$'
+                df.iloc[6 * idx_loc + 5, 6 + j] = '{0:.2f}'.format(res2[1].iloc[num, idx]) + '\si{^{***}}'
             elif 0.05 > res2[2].iloc[num, idx] >= 0.01:
-                df.iloc[6 * idx_loc + 5, 6 + j] = '$ {0:.2f}'.format(res2[1].iloc[num, idx]) + '^{**}$'
+                df.iloc[6 * idx_loc + 5, 6 + j] = '{0:.2f}'.format(res2[1].iloc[num, idx]) + '\si{^{**}}'
             elif 0.1 > res2[2].iloc[num, idx] >= 0.05:
-                df.iloc[6 * idx_loc + 5, 6 + j] = '$ {0:.2f}'.format(res2[1].iloc[num, idx]) + '^{*}$'
+                df.iloc[6 * idx_loc + 5, 6 + j] = '{0:.2f}'.format(res2[1].iloc[num, idx]) + '\si{^{*}}'
             else:
                 df.iloc[6 * idx_loc + 5, 6 + j] = res2[1].iloc[num, idx]
 
@@ -175,8 +175,9 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
     latex_str = latex_str.replace(r'\$', '$')
     latex_str = latex_str.replace(r'\{', '{')
     latex_str = latex_str.replace(r'\}', '}')
-    latex_str = latex_str.replace(r'\textasciicircum', '^')
+    latex_str = latex_str.replace(r'\textasciicircum ', '^')
     latex_str = latex_str.replace(r'nan', '')
+    latex_str = latex_str.replace(r'\textbackslash ', '\\')
     with open(out_path, 'w') as file:
         file.write(latex_str)
     return

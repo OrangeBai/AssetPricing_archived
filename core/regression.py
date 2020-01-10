@@ -1,7 +1,6 @@
 from core.adv_utlis import *
 
 
-
 def reg(y, x):
     """
     Regression of panel data on the given factors.
