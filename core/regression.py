@@ -16,6 +16,7 @@ def reg(y, x):
     coef = pd.DataFrame()
     t_value = pd.DataFrame()
     p_value = pd.DataFrame()
+    resid = pd.DataFrame()
     adjRsquare = pd.Series()
     try:
         assert T1 == T2
@@ -27,11 +28,33 @@ def reg(y, x):
         coef[port_name] = result.params
         t_value[port_name] = result.tvalues
         p_value[port_name] = result.pvalues
+        resid[port_name] = result.resid
         adjRsquare[port_name] = result.rsquared_adj
     coef = coef.T
     t_value = t_value.T
     p_value = p_value.T
-    return coef, t_value, p_value, adjRsquare
+    return coef, t_value, p_value, adjRsquare, resid
+
+
+def GRS(Y, X):
+    n = Y.shape[1]
+    t = X.shape[0]
+    l = X.shape[1] - 1
+    res = reg(Y, X)
+    alpha = res[0][0]
+    sigma = res[4]
+    Simga = np.cov(sigma.T, ddof=l+1)
+    mu = X.mean(axis=0)[1:]
+    F = X[:, 1:]
+    omega = np.cov(F.T)
+    grs = alpha.dot(np.linalg.inv(Simga)).dot(alpha)/(1+mu.dot(np.linalg.inv(omega)).dot(mu))*(t/n)*((t-n-l)/(t-l-1))
+    abs_alpha = np.abs(alpha).mean()
+    Y_mean = Y.mean(axis=0)
+    adj_Y_mean = Y_mean - Y_mean.mean()
+    ret_3 = abs_alpha / abs(Y_mean).mean()
+    ret_4 = alpha.var()/Y_mean.var()
+    ret_5 = abs_alpha / np.abs(adj_Y_mean).mean()
+    return grs, abs_alpha, ret_3, ret_4
 
 
 def regress(period, y_panel_name, factor_panels=None, factor_names=None):
@@ -61,9 +84,49 @@ def regress(period, y_panel_name, factor_panels=None, factor_names=None):
     Rp_Rf = monthly_rets.subtract(rf_month, axis=0)
     X = np.array(monthly_factors)
     X = sm.add_constant(X)
-
     return reg(Rp_Rf, X)
 
 
+def cal_grs(period, y_panel_name, factor_panels=None, factor_names=None):
+    if factor_names is None:
+        factor_names = ['RiskPremium1', 'SMB1', 'HML1']
+    rf_month = get_rf_rate(period, mode='m')
+    all_factor = get_factors(period)
+    selected_factors = all_factor.loc[:, factor_names]
+
+    y_panel_path = os.path.join(config.panel_data_directory, y_panel_name)
+    y_panel = PanelData.load_pickle(y_panel_path)
+    y_panel.set_weight('vw')
+
+    if factor_panels is not None:
+        for panel_name in factor_panels:
+            panel_path = os.path.join(config.panel_data_directory, panel_name)
+            panel = PanelData.load_pickle(panel_path)
+            panel.set_weight('vw')
+            ret = panel.ret
+            selected_factors[panel_name.split(',')[0]] = (ret.iloc[:, 0] + ret.iloc[:, 3] -
+                                                          ret.iloc[:, 2] - ret.iloc[:, 5]) / 2
+
+    rets = y_panel.ret
+    monthly_rets = period_ret_all(rets, config.month_split, period)
+    monthly_factors = period_ret_all(selected_factors, config.month_split, period)
+
+    Rp_Rf = monthly_rets.subtract(rf_month, axis=0)
+    X = np.array(monthly_factors)
+    X = sm.add_constant(X)
+    grs = GRS(Rp_Rf, X)
+    return grs
+
+
+def FM_regression(X,Y):
+    """
+    Fama Macbeth regression
+    @param X:
+    @param Y:
+    @return:
+    """
+
+
+
 if __name__ == '__main__':
-    print(1)
+    res_1 = cal_grs(('1997-01', '2010-04'), 'MV_AdjTover_Pre_55.p', factor_panels=['MV_AdjTover_Pre_23.p'])
