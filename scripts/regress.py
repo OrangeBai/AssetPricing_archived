@@ -1,5 +1,6 @@
 from core.regression import *
 from core.adv_utlis import *
+from core.gen_latex_table import *
 
 res_1 = regress(('1997-01', '2010-04'), 'MV_AdjTover_Pre_55.p', factor_panels=['MV_AdjTover_Pre_23.p'])
 res_2 = regress(('1997-01', '2010-04'), 'AdjTover_Pre_5.p', factor_panels=['MV_AdjTover_Pre_23.p'])
