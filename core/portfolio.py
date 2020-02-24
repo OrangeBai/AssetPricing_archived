@@ -102,7 +102,7 @@ class Portfolio(PortfolioBase):
         all_stocks_mv = self.mv
         all_stocks_mv[all_stocks_mv.isna()] = 0
         if weight == 'value':
-            self.portfolio_return = (all_stocks_return * all_stocks_mv).sum(axis=1) / all_stocks_mv.sum(axis=1)
+            self.portfolio_return = (all_stocks_return * all_stocks_mv.divide(all_stocks_mv.sum(axis=1), axis=0)).sum(axis=1)
         else:
             self.portfolio_return = all_stocks_return.sum(axis=1)/na.sum(axis=1)
 
