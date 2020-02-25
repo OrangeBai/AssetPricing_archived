@@ -114,7 +114,9 @@ res_2 = cal_grs(('2010-04', '2019-07'), 'Saleable_Sigma_Pre_5.p', factor_panels=
 append_list(grs_statistics, res_1, res_2)
 
 df = pd.DataFrame(grs_statistics)
-df.loc[0,:] = ['\si{Short sale orbidden set}', '\si{Non-shortable set}', '\si{Shortable set}']
+df.iloc[:,1] = df.iloc[:,1] * 100
+df.iloc[:,5] = df.iloc[:,5] * 100
+df.index = 8 * ['\si{Short sale orbidden set}', '\si{Non-shortable set}', '\si{Shortable set}']
 latex_str = df.to_latex(None, float_format="{:0.2f}".format)
 latex_str = latex_str.replace(r'\$', '$')
 latex_str = latex_str.replace(r'\{', '{')
@@ -122,7 +124,7 @@ latex_str = latex_str.replace(r'\}', '}')
 latex_str = latex_str.replace(r'\textasciicircum ', '^')
 latex_str = latex_str.replace(r'nan', '')
 latex_str = latex_str.replace(r'\textbackslash ', '\\')
-out_path = r'F:\PHD\Finance\Papers\ShortSellContrain\table\grs.tex'
+out_path = r'/Users/oranbebai/PHD/Finance/Papers/ShortSellContrain/table/grs.tex'
 with open(out_path, 'w') as file:
     file.write(latex_str)
 
