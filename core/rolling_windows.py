@@ -53,14 +53,13 @@ class RollingWindow:
                 cur_dependent = self.dependent.iloc[i: i + self.windows_length]
                 cur_exogenous = self.exogenous.iloc[i: i + self.windows_length]
                 cur_result = {}
-
+                X = np.array(cur_exogenous)
+                X = sm.add_constant(X)
                 # Number of stocks
                 for j in range(portfolio_num):
                     Y = cur_dependent.iloc[:, j]
                     if sum(Y.isna()) > self.nan_num:
                         continue
-                    X = np.array(cur_exogenous)
-                    X = sm.add_constant(X)
                     reg_result = sm.OLS(Y, X, missing='drop').fit()
                     cur_result[portfolio_names[j]] = reg_result
 

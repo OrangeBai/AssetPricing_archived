@@ -62,12 +62,12 @@ def cal_table_features(df):
     for idx in df.columns:
         s = df.loc[:, idx] * 100
         temp_list = [s.mean(), np.std(s), skew(s), kurtosis(s),
-                     np.percentile(s, 25), np.percentile(s, 75), ttest_1samp(s, 0)[0], ttest_1samp(s, 0)[1]]
+                     np.percentile(s, 25), np.percentile(s, 75), ttest_1samp(s, 0)[0]]
         df_feature[idx] = temp_list
     df_feature = pd.DataFrame(df_feature).T
-    df_feature.columns = ['mean', 'std', 'skewness', 'kurtosis', '25th', '75th', 't-statistics', 'p-value']
+    df_feature.columns = ['mean', 'std', 'skewness', 'kurtosis', '25th', '75th', 't-statistics']
 
-    df_cov = np.corrcoef(df.T.iloc[:,:7])
+    df_cov = np.corrcoef(df.T.iloc[:, :7])
     df_cov = pd.DataFrame(df_cov, index=df.columns, columns=df.columns)
     df_cov.columns = df.columns
     df_cov.index = df.columns
@@ -91,8 +91,7 @@ res1_latex_str = res1_latex_str.replace(r'\textbackslash ', '\\')
 out_path = r'/Users/oranbebai/PHD/Finance/Papers/ShortSellContrain/table/mean.tex'
 with open(out_path, 'w') as file:
     file.write(res1_latex_str)
-    
-    
+
 res2_latex_str = res2.to_latex(None, float_format="{:0.2f}".format)
 res2_latex_str = res2_latex_str.replace(r'\$', '$')
 res2_latex_str = res2_latex_str.replace(r'\{', '{')

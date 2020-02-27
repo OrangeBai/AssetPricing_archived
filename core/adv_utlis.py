@@ -103,10 +103,12 @@ def period_ret_all(input_df, month_split, period=None):
     return pd.DataFrame(ret_all).T.sort_index()
 
 
-def period_ret(input_df):
+def period_ret(input_df, max_na=5):
     ret = input_df.sort_index()
     log_ret = (1 + ret).apply(np.log)
     overall_ret = log_ret.sum()
+    index = log_ret.isna().sum() > max_na
+    overall_ret[index] = np.nan
     return overall_ret
 
 
