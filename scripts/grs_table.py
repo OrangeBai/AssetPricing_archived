@@ -114,8 +114,9 @@ res_2 = cal_grs(('2010-04', '2019-07'), 'Saleable_Sigma_Pre_5.p', factor_panels=
 append_list(grs_statistics, res_1, res_2)
 
 df = pd.DataFrame(grs_statistics)
-df.iloc[:,1] = df.iloc[:,1] * 100
-df.iloc[:,5] = df.iloc[:,5] * 100
+df.iloc[:, 1] = df.iloc[:, 1] * 100
+df.iloc[:, 5] = df.iloc[:, 5] * 100
+
 df.index = 8 * ['\si{Short sale orbidden set}', '\si{Non-shortable set}', '\si{Shortable set}']
 latex_str = df.to_latex(None, float_format="{:0.2f}".format)
 latex_str = latex_str.replace(r'\$', '$')

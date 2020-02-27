@@ -77,4 +77,31 @@ def cal_table_features(df):
 f1, cov1 = cal_table_features(df_1)
 f2, cov2 = cal_table_features(df_2)
 
+res1 = f1.append(f2)
+res2 = cov1.append(cov2)
+
+res1_latex_str = res1.to_latex(None, float_format="{:0.2f}".format)
+res1_latex_str = res1_latex_str.replace(r'\$', '$')
+res1_latex_str = res1_latex_str.replace(r'\{', '{')
+res1_latex_str = res1_latex_str.replace(r'\}', '}')
+res1_latex_str = res1_latex_str.replace(r'\textasciicircum ', '^')
+res1_latex_str = res1_latex_str.replace(r'nan', '')
+res1_latex_str = res1_latex_str.replace(r'\textbackslash ', '\\')
+
+out_path = r'/Users/oranbebai/PHD/Finance/Papers/ShortSellContrain/table/mean.tex'
+with open(out_path, 'w') as file:
+    file.write(res1_latex_str)
+    
+    
+res2_latex_str = res2.to_latex(None, float_format="{:0.2f}".format)
+res2_latex_str = res2_latex_str.replace(r'\$', '$')
+res2_latex_str = res2_latex_str.replace(r'\{', '{')
+res2_latex_str = res2_latex_str.replace(r'\}', '}')
+res2_latex_str = res2_latex_str.replace(r'\textasciicircum ', '^')
+res2_latex_str = res2_latex_str.replace(r'nan', '')
+res2_latex_str = res2_latex_str.replace(r'\textbackslash ', '\\')
+out_path = r'/Users/oranbebai/PHD/Finance/Papers/ShortSellContrain/table/cor.tex'
+with open(out_path, 'w') as file:
+    file.write(res2_latex_str)
+
 print(1)
