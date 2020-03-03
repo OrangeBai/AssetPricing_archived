@@ -19,14 +19,21 @@ all_stocks.print()
 all_stocks_path = os.path.join(config.temp_data_path, 'AllStocksPortfolio.p')
 all_stocks.to_pickle(all_stocks_path)
 
-
 allocator_M = Allocate(config.A_lists, config.month_split)
 allocator_M_path = os.path.join(config.temp_data_path, 'Allocator_M.p')
 allocator_M.to_pickle(allocator_M_path)
 
+allocator_M_all = Allocate(config.A_lists, config.month_split, exclude_fin=0)
+allocator_M_all_path = os.path.join(config.temp_data_path, 'Allocator_M_all.p')
+allocator_M_all.to_pickle(allocator_M_all_path)
+
 allocator_Y = Allocate(config.A_lists, config.year_split, num_of_nan=40)
 allocator_Y_path = os.path.join(config.temp_data_path, 'Allocator_Y.p')
 allocator_Y.to_pickle(allocator_Y_path)
+
+allocator_Y_all = Allocate(config.A_lists, config.month_split, exclude_fin=0)
+allocator_Y_all_path = os.path.join(config.temp_data_path, 'Allocator_Y_all.p')
+allocator_Y_all.to_pickle(allocator_Y_all_path)
 
 
 

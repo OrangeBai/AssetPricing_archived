@@ -12,7 +12,7 @@ class Allocate:
     """
     This class is used for allocate stocks into different groups according to their features.
     """
-    def __init__(self, tickers, periods, period_to_tickers=None, num_of_nan=5, list_limitation='year'):
+    def __init__(self, tickers, periods, period_to_tickers=None, num_of_nan=5, list_limitation='year', exclude_fin=1):
         """
         initialization method
         :param tickers: list of tickers:['000001','000002',...'600001']
@@ -31,12 +31,12 @@ class Allocate:
 
         self.periods_to_tickers = period_to_tickers
 
-        self._filter__()
+        self._filter__(exclude_fin)
 
         self.factors = {}
         self.periods_to_factors = {}
 
-    def _filter__(self):
+    def _filter__(self, exculde_fin):
         """
         Filter tickers according to list date and number of nan in the period.
         :return:
@@ -54,7 +54,7 @@ class Allocate:
                 # if stock is not in A list, or there are too many nan data, the ticker is excluded.
                 self.tickers.remove(stock)
                 continue
-            if config.co_info.loc[stock, 'Indcd'] == 1:
+            if config.co_info.loc[stock, 'Indcd'] == 1 and exculde_fin:
                 # if stock belongs to Finance related, it should be excluded.
                 self.tickers.remove(stock)
                 continue
