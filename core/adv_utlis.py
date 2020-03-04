@@ -98,8 +98,9 @@ def period_ret_all(input_df, month_split, period=None):
     end_month = get_month(input_df.index[-1])
     for month_period in [month for month in month_split if start_month <= month[0] <= end_month]:
         # mask = (input_df.index > month_period[0]) & (input_df.index < month_period[1])
-        cur_ret = input_df.loc[month_period[0]: month_period[1], :]
-        ret_all[month_period[0]] = period_ret(cur_ret)
+        if month_period[0] < period[1]:
+            cur_ret = input_df.loc[month_period[0]: month_period[1], :]
+            ret_all[month_period[0]] = period_ret(cur_ret)
     return pd.DataFrame(ret_all).T.sort_index()
 
 
