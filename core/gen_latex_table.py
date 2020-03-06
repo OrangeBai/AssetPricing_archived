@@ -6,9 +6,10 @@ from core.portfolio import *
 from scipy.stats import ttest_1samp
 from core.adv_utlis import *
 
-def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
+
+def gen_regress_table(ress, data_list):
     """
-    @param res: regression results. [beta, t-test, p-value, R]
+    @param ress: regression results. [beta, t-test, p-value, R]
     @param data_list: which data are required
     @param out_dir_name: output_directory name
     @param out_file: out put file name
@@ -16,9 +17,6 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
     """
     res1 = ress[0]
     res2 = ress[1]
-    out_dir = config.table_directory + str(out_dir_name)
-    if not os.path.exists(out_dir):
-        os.makedirs(out_dir)
     group_num_1 = 25
     group_num_2 = 5
     assert group_num_1 == len(res1[3])
@@ -64,19 +62,17 @@ def gen_latex_table_result(ress, data_list, out_dir_name, out_file):
             else:
                 df.iloc[6 * idx_loc + 5, 6 + j] = res2[1].iloc[num, idx]
 
-    out_path = os.path.join(out_dir, out_file)
+    # out_path = os.path.join(out_dir, out_file)
 
-    latex_str = df.to_latex(None, float_format="{:0.2f}".format, na_rep='')
-
-    latex_str = latex_str.replace(r'\$', '$')
-    latex_str = latex_str.replace(r'\{', '{')
-    latex_str = latex_str.replace(r'\}', '}')
-    latex_str = latex_str.replace(r'\textasciicircum ', '^')
-    latex_str = latex_str.replace(r'nan', '')
-    latex_str = latex_str.replace(r'\textbackslash ', '\\')
-    with open(out_path, 'w') as file:
-        file.write(latex_str)
-    return
+    # latex_str = df.to_latex(None, float_format="{:0.2f}".format, na_rep='')
+    #
+    # latex_str = latex_str.replace(r'\$', '$')
+    # latex_str = latex_str.replace(r'\{', '{')
+    # latex_str = latex_str.replace(r'\}', '}')
+    # latex_str = latex_str.replace(r'\textasciicircum ', '^')
+    # latex_str = latex_str.replace(r'nan', '')
+    # latex_str = latex_str.replace(r'\textbackslash ', '\\')
+    return df
 
 
 def gen_table_portfolio(file_name_1, file_name_2, weight='ew'):

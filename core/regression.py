@@ -58,47 +58,7 @@ def GRS(Y, X):
 
 
 def regress(period, y_panel_name, factor_panels=None, factor_names=None):
-    HML_path = os.path.join(config.panel_data_directory, 'MV_PB_23.p')
-    t = PanelData.load_pickle(HML_path)
-    HML = (t.ret.iloc[:, 0] + t.ret.iloc[:, 3] - t.ret.iloc[:, 2] - t.ret.iloc[:, 5])
-    SMB = (t.ret.iloc[:, 0] + t.ret.iloc[:, 1] + t.ret.iloc[:, 2] -
-           t.ret.iloc[:, 3] - t.ret.iloc[:, 4] - t.ret.iloc[:, 5]) / 3
-    Rm_path = os.path.join(config.panel_data_directory, 'All_year.p')
-    Rm_panel = PanelData.load_pickle(Rm_path)
-    factors = Rm_panel.ret
-    factors['HML'] = HML
-    factors['SMB'] = SMB
-    if factor_names is None:
-        factor_names = ['RiskPremium1', 'SMB1', 'HML1']
-    rf_month = get_rf_rate(period, mode='m')
-    # all_factor = get_factors(period)
-    # selected_factors = all_factor.loc[:, factor_names]
-
-    y_panel_path = os.path.join(config.panel_data_directory, y_panel_name)
-    y_panel = PanelData.load_pickle(y_panel_path)
-    y_panel.set_weight('vw')
-
-    if factor_panels is not None:
-        for panel_name in factor_panels:
-            panel_path = os.path.join(config.panel_data_directory, panel_name)
-            panel = PanelData.load_pickle(panel_path)
-            panel.set_weight('vw')
-            ret = panel.ret
-            factors[panel_name.split(',')[0]] = (ret.iloc[:, 0] + ret.iloc[:, 3] -
-                                                          ret.iloc[:, 2] - ret.iloc[:, 5]) / 2
-
-    rets = y_panel.ret
-    monthly_rets = period_ret_all(rets, config.month_split, period)
-    monthly_factors = period_ret_all(factors, config.month_split, period)
-    monthly_factors.loc[:, 'all'] = monthly_factors.loc[:, 'all'].subtract(rf_month)
-
-    Rp_Rf = monthly_rets.subtract(rf_month, axis=0)
-    X = np.array(monthly_factors)
-    X = sm.add_constant(X)
-    return reg(Rp_Rf, X)
-
-
-def cal_grs(period, y_panel_name, factor_panels=None, factor_names=None):
+    factors2 = get_factors2(period)
     if factor_names is None:
         factor_names = ['RiskPremium1', 'SMB1', 'HML1']
     rf_month = get_rf_rate(period, mode='m')
@@ -115,12 +75,44 @@ def cal_grs(period, y_panel_name, factor_panels=None, factor_names=None):
             panel = PanelData.load_pickle(panel_path)
             panel.set_weight('vw')
             ret = panel.ret
-            selected_factors[panel_name.split(',')[0]] = (ret.iloc[:, 0] + ret.iloc[:, 3] -
+            factors2[panel_name.split(',')[0]] = (ret.iloc[:, 0] + ret.iloc[:, 3] -
                                                           ret.iloc[:, 2] - ret.iloc[:, 5]) / 2
 
     rets = y_panel.ret
     monthly_rets = period_ret_all(rets, config.month_split, period)
-    monthly_factors = period_ret_all(selected_factors, config.month_split, period)
+    monthly_factors = period_ret_all(factors2, config.month_split, period)
+    monthly_factors.loc[:, 'all'] = monthly_factors.loc[:, 'all'].subtract(rf_month)
+
+    Rp_Rf = monthly_rets.subtract(rf_month, axis=0)
+    X = np.array(monthly_factors)
+    X = sm.add_constant(X)
+    return reg(Rp_Rf, X)
+
+
+def cal_grs(period, y_panel_name, factor_panels=None, factor_names=None):
+    factors2 = get_factors2(period)
+    if factor_names is None:
+        factor_names = ['RiskPremium1', 'SMB1', 'HML1']
+    rf_month = get_rf_rate(period, mode='m')
+    all_factor = get_factors(period)
+    selected_factors = all_factor.loc[:, factor_names]
+
+    y_panel_path = os.path.join(config.panel_data_directory, y_panel_name)
+    y_panel = PanelData.load_pickle(y_panel_path)
+    y_panel.set_weight('vw')
+
+    if factor_panels is not None:
+        for panel_name in factor_panels:
+            panel_path = os.path.join(config.panel_data_directory, panel_name)
+            panel = PanelData.load_pickle(panel_path)
+            panel.set_weight('vw')
+            ret = panel.ret
+            factors2[panel_name.split(',')[0]] = (ret.iloc[:, 0] + ret.iloc[:, 3] -
+                                                          ret.iloc[:, 2] - ret.iloc[:, 5]) / 2
+
+    rets = y_panel.ret
+    monthly_rets = period_ret_all(rets, config.month_split, period)
+    monthly_factors = period_ret_all(factors2, config.month_split, period)
 
     Rp_Rf = monthly_rets.subtract(rf_month, axis=0)
     X = np.array(monthly_factors)

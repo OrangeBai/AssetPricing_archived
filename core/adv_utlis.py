@@ -77,6 +77,21 @@ def get_rf_rate(period, sep='\t', encoding='gbk', mode='d', path=None):
         return rf_month
 
 
+def get_factors2(period):
+    HML_path = os.path.join(config.panel_data_directory, 'MV_PB_23.p')
+    t = PanelData.load_pickle(HML_path)
+    t.set_weight('vw')
+    HML = (t.ret.iloc[:, 0] + t.ret.iloc[:, 3] - t.ret.iloc[:, 2] - t.ret.iloc[:, 5])/2
+    SMB = (t.ret.iloc[:, 0] + t.ret.iloc[:, 1] + t.ret.iloc[:, 2] -
+           t.ret.iloc[:, 3] - t.ret.iloc[:, 4] - t.ret.iloc[:, 5]) / 3
+    Rm_path = os.path.join(config.panel_data_directory, 'All_year.p')
+    Rm_panel = PanelData.load_pickle(Rm_path)
+    factors = Rm_panel.ret
+    factors['HML'] = HML
+    factors['SMB'] = SMB
+    factors = factors.loc[period[0]:period[1], :]
+    return factors
+
 def get_factors(period, market_type='P9709', portfolio='1', factor_path=None):
     if factor_path is None:
         factor_path = os.path.join(config.raw_directory, 'STK_MKT_FivefacDay.txt')
@@ -98,9 +113,8 @@ def period_ret_all(input_df, month_split, period=None):
     end_month = get_month(input_df.index[-1])
     for month_period in [month for month in month_split if start_month <= month[0] <= end_month]:
         # mask = (input_df.index > month_period[0]) & (input_df.index < month_period[1])
-        if month_period[0] < period[1]:
-            cur_ret = input_df.loc[month_period[0]: month_period[1], :]
-            ret_all[month_period[0]] = period_ret(cur_ret)
+        cur_ret = input_df.loc[month_period[0]: month_period[1], :]
+        ret_all[month_period[0]] = period_ret(cur_ret)
     return pd.DataFrame(ret_all).T.sort_index()
 
 

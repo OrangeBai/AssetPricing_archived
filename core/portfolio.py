@@ -101,7 +101,7 @@ class Portfolio(PortfolioBase):
         if weight == 'value':
             self.portfolio_return = (all_stocks_return * all_stocks_mv).sum(axis=1)/all_stocks_mv.sum(axis=1)
         else:
-            self.portfolio_return = all_stocks_return.sum(axis=1)
+            self.portfolio_return = all_stocks_return.mean(axis=1)
 
         return self.portfolio_return
 

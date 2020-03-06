@@ -4,9 +4,14 @@
     <list default="true" id="2f1011ff-8f9d-4a53-9a59-1752759b813b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/adv_utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/adv_utlis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/gen_latex_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/gen_latex_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/portfolio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/regression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/factors/pb.py" beforeDir="false" afterPath="$PROJECT_DIR$/factors/pb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/all_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/all_stocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/regress.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/regress.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,6 +128,9 @@
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -138,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="extract_features" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="grs_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -146,12 +154,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/preprocess" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocess/extract_features.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/grs_table.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -182,6 +190,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="portfolio_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Liquidity" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/portfolio_table.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="regress" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Liquidity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -204,43 +234,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="statistic_description" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Liquidity" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/statistic_description.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.CirculatedMarketValue" />
-      <item itemvalue="Python.statistic_description" />
       <item itemvalue="Python.all_stocks" />
-      <item itemvalue="Python.extract_features" />
       <item itemvalue="Python.regress" />
       <item itemvalue="Python.pb" />
+      <item itemvalue="Python.portfolio_table" />
+      <item itemvalue="Python.grs_table" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.regress" />
-        <item itemvalue="Python.all_stocks" />
+        <item itemvalue="Python.grs_table" />
         <item itemvalue="Python.pb" />
-        <item itemvalue="Python.extract_features" />
-        <item itemvalue="Python.statistic_description" />
+        <item itemvalue="Python.portfolio_table" />
+        <item itemvalue="Python.all_stocks" />
       </list>
     </recent_temporary>
   </component>
@@ -414,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582817357971</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Default Changelist">
+      <created>1583335466223</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1583335466223</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,43 +555,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/regress.py</url>
-          <line>106</line>
+          <line>108</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/regress.py</url>
-          <line>83</line>
+          <line>85</line>
           <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/regress.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/regress.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/regress.py</url>
-          <line>30</line>
-          <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/factors/ret.py</url>
           <line>22</line>
           <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/gen_latex_table.py</url>
-          <line>141</line>
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/portfolio_table.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/statistic_description.py</url>
@@ -619,29 +609,34 @@
           <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/factors/pb.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="205" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/all_stocks.py</url>
           <line>44</line>
           <option name="timeStamp" value="206" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/regression.py</url>
-          <line>86</line>
-          <option name="timeStamp" value="213" />
+          <url>file://$PROJECT_DIR$/scripts/regress.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/regression.py</url>
-          <line>94</line>
-          <option name="timeStamp" value="216" />
+          <url>file://$PROJECT_DIR$/scripts/portfolio_table.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/regression.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="217" />
+          <url>file://$PROJECT_DIR$/scripts/portfolio_table.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/regress.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="237" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/factors/pb.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="245" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

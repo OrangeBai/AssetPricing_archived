@@ -29,8 +29,9 @@ period = config.period
 allocate(['Y_MktV.csv', 'Y_pb.csv'], ['MV', 'PB'], '2*3',
          'MV_PB_23.p', allocator_file, data_file, period)
 
-t = PanelData.load_pickle(r'/Users/oranbebai/Documents/Data/Finance/Panel/MV_PB_23.p')
 
-HML = (t.ret.iloc[:, 0] + t.ret.iloc[:, 3] - t.ret.iloc[:, 2] - t.ret.iloc[:, 5])
+t = PanelData.load_pickle(r'/Users/oranbebai/Documents/Data/Finance/Panel/MV_PB_23_M.p')
+
+HML = (t.ret.iloc[:, 0] + t.ret.iloc[:, 3] - t.ret.iloc[:, 2] - t.ret.iloc[:, 5])/2
 SMB = (t.ret.iloc[:, 0] + t.ret.iloc[:, 1] + t.ret.iloc[:, 2] -
        t.ret.iloc[:, 3] + t.ret.iloc[:, 4] + t.ret.iloc[:, 5]) / 3
